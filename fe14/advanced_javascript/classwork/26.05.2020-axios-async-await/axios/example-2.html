@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="axios.min.js"></script>
+    <script>
+        // fetch
+        fetch("http://danit.com.ua/login", {
+                method: "POST",
+                body: JSON.stringify({
+                    login: "Mandor",
+                    password: "Savall"
+                })
+            })
+            .then(res => {
+                if (!res.ok) throw Error(res.statusText);
+                return res.json();
+            })
+            .then(data => console.log(data))
+            .catch(error => console.log(error));
+
+        // axios
+        axios
+            .post("http://danit.com.ua/login", {
+                login: "Mandor",
+                password: "Savall"
+            })
+            .then(response => console.log(response.data))
+            .catch(error => console.log(error));
+
+    </script>
+</body>
+
+</html>

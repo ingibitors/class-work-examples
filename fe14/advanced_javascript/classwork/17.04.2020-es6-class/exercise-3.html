@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            cursor: pointer;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            border-radius: .25rem;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        
+        .btn-primary.active {
+            color: #007bff;
+            background-color: #fff;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        /*
+    Задание: напишите класс, создающий объект, описывающий кнопку. 
+    Класс должно получать такие параметры:
+    - текст кнопки;
+    - id кнопки есть нужно;
+    - список классов кнопки (в виде массива строк);
+    - название класса, который добавляет кнопке при первом клике и убирается при повторном;
+    
+    У объекта должен быть метод render, который возвращает DOM-элемент, описывающий кнопку, в таком виде:
+    <button class="object.classList">object.buttonText</button>
+    
+    Также у объекта должен быть метод handleClick, который будет 
+    привязан к событию "click" на кнопке, и будет устанавливать ей 
+    активный класс если его нет и убирать его - если он есть.
+    
+    В качестве аргумента класс будет принимать объект с параметрами. Пример:
+    */
+
+    class Button {
+        constructor ({text, id, classList, activeClass}) {
+            this.text = text;
+            this.id = id;
+            this.classList = [...classList];
+            this.activeClass = activeClass;
+            this.elem = null;
+        }
+        
+        render() {
+            this.elem = document.createElement('button');
+            const {elem} = this;
+            /*
+            const elem = this.elem;
+            */
+            elem.className = this.classList.join(' ');
+            elem.id = this.id;
+            elem.textContent = this.text;
+            elem.addEventListener('click', this.handleClick.bind(this));
+            return elem;
+        }
+        
+        handleClick() {
+            this.elem.classList.toggle(this.activeClass);
+        }
+        
+
+    }
+
+    const btnPrimaryProps = {
+        text: "Button",
+        classList: ["btn", "btn-primary"],
+        activeClass: "active",
+        href: "#",
+        type: "button",
+        id: "myBtn"
+    };
+
+    const btnPrimary = new Button(btnPrimaryProps);
+    const root = document.getElementById('root');
+    root.append(btnPrimary.render());
+
+    </script>
+</body>
+
+</html>

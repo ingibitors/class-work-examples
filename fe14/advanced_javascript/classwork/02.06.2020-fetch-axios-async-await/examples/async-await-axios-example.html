@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="axios.min.js"></script>
+    <script>
+        
+        // с помощью async/await и axios это выглядит так:
+        
+        const productUrl = "http://danit.com.ua/products/1";
+        const product = getRequest(productUrl);
+        product.then(({name, category}) => {
+            document.body.insertAdjacentHTML("beforeend", `<p>Товар: ${name}. Категория: ${category}`)
+        })
+
+        async function getRequest(url){
+            const {data} = await axios.get(url);
+            const {category} = data;
+
+           const {data: name} = await axios.get(`http://danit.com.ua/categories/${category}`);
+           const product = {
+                name: productInfo.name,
+                category: name
+            };
+            return product;
+        }
+    </script>
+</body>
+</html>

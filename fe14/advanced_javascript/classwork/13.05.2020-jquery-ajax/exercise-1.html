@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body>
+    <ul id="free-towns"></ul>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script>
+        
+        /*
+        Отправьте AJAX-запрос с помощью JQuery на адрес "http://danit.com.ua/free-towns-list-json". 
+        Ответ должен быть в виде массива строк. Пример: ["Браавос", "Волантис", "Квохор", "Лис", "Лорат", "Мир", "Норвос", "Пентос", "Тирош"]ж
+
+        Используя полученный ответ в формате JSON, выведите внутри ul с id="free-towns" список всех Вольных городов Эссоса
+        */
+        $.ajax({
+            url: "http://danit.com.ua/free-towns-list-json", 
+            dataType: "json",
+            success: function(data){
+                const newArr = data.map(town => {
+                    const li = document.createElement("li")
+                    li.textContent = town;
+                    return li
+                });
+                const ul = document.getElementById("free-towns")
+                ul.append(...newArr);
+            },
+            error: function(error){
+                console.log(error)
+            }
+        })
+    </script>
+        
+</body>
+
+</html>

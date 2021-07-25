@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+        /*
+        стрелочная функция не имеет своего this и поэтому заимствует this у функции, внутри которой она БЫЛА СОЗДАНА, причем делает это раз и навсегда - а значит, this внутри стрелочной функции всегда будет равен одному и тому же, неважно, где и как она вызвана
+        */
+
+        const isAdult = (age)=> {
+            console.log(this); // функция isAdult создана с помощью функции общего потока, а значит будет ссылаться на Window
+        }
+
+        
+        
+        const person = {
+            age: 18,
+            getAge: () => {
+                console.log(this); // родительским по отношению к методу getAge является Window, а значит - this будет ссылаться на него
+            },
+            showAge: function() {
+                console.log(this); // тут 
+                setTimeout(() => {
+                    console.log(this); // анонимная стрелочная функция внутри setTimeout была создана ВНУТРИ метода showAge в момент ее вызова. А значит заимствует у метода showAge ее this. А this у метода showAge ссылается на объект person
+                }, 500)
+            },
+            tabel: {
+                biology: 13,
+                mathematic: 8,
+                history: 9,
+                calcAvarageScore: function() {
+                    const calcSum = ()=> {
+                        console.log(this); // создана внутри calcAvarageScore - значит берет ее this. А ее this ссылается на объект tabel
+                    };
+
+                    calcSum();
+                },
+                getLowerScore: () => {
+                    console.log(this); // 
+                }
+            }
+        };
+
+        // isAdult();
+    //    person.getAge(); 
+    //    person.showAge();
+       person.tabel.calcAvarageScore();
+//        person.tabel.getLowerScore();
+
+
+    </script>
+</body>
+
+</html>

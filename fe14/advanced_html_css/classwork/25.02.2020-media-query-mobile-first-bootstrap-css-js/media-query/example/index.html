@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* COMMON STYLES  */
+        body {
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+
+        .header {
+            background-color: #9933cc;
+            padding: 45px 0;
+        }
+
+        .header-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .header-logo {
+            text-decoration: none;
+            color: #fff;
+            font-size: 42px;
+        }
+
+        .header-contact {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* ARTICLE */
+
+        .article {
+            padding: 25px 0;
+        }
+
+        .article-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+        }
+
+        .article-right-col {
+            width: 25%;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .article-main-col {
+            width: 50%;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .article-left-col {
+            width: 25%;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .article-gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .article-gallery-img {
+            width: 30%;
+            height: 140px;
+            background-position: center;
+            background-size: cover;
+            margin-bottom: 15px;
+        }
+
+
+        /* SIDEBAR */
+
+
+        .sidebar-menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .sidebar-menu-item {
+            padding: 8px;
+            margin-bottom: 7px;
+            background-color: #33b5e5;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        .sidebar-menu-link {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .menu li:hover {
+            background-color: #0099cc;
+        }
+
+        .sidebar-page-list {
+            background-color: #33b5e5;
+            padding: 15px;
+            color: #ffffff;
+            text-align: center;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            box-sizing: border-box;
+        }
+        
+        .sidebar-page-item {
+            /*background-color: #33b5e5;*/
+        }
+
+        /* FOOTER */
+
+        .footer {
+            background-color: #0099cc;
+            padding: 15px;
+        }
+
+        .footer-info {
+            color: #ffffff;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .article-left-col {
+                width: 40%;
+            }
+            .article-main-col {
+                width: 60%;
+            }
+            .article-right-col {
+                width: 100%;
+            }
+            .sidebar-page-list {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .sidebar-page-item {
+                flex: 1 0 33%;
+                box-sizing: border-box;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .article-left-col {
+                width: 100%;
+            }
+            .article-main-col {
+                width: 100%;
+            }
+            .article-right-col {
+                width: 100%;
+            }
+            .sidebar-menu {
+                display: flex;
+                justify-content: center;
+            }
+            .sidebar-menu-item {
+                padding: 10px 15px;
+                margin: 0 5px;
+                text-align: center;
+            }
+
+            .article-gallery {
+                justify-content: center;
+            }
+
+            .article-gallery-img {
+                width: 200px;
+                margin: 10px;
+            }
+
+            .sidebar-page-list {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-gallery-img {
+                width: 90%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .header-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-logo {
+                margin-bottom: 15px;
+            }
+
+            .header-contacts-list {
+                margin-bottom: 15px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <a href="/" class="header-logo">Chania</a>
+                <div class="header-contacts-list">
+                    <a href="" class="header-contact">+38-099-755-22-33</a>
+                    <a href="" class="header-contact">chainia@gmal.com</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article">
+        <div class="container">
+            <div class="article-row">
+                <div class="article-left-col">
+                    <ul class="sidebar-menu">
+                        <li class="sidebar-menu-item"><a class="sidebar-menu-link" href="#">The Flight</a></li>
+                        <li class="sidebar-menu-item"><a class="sidebar-menu-link" href="#">The City</a></li>
+                        <li class="sidebar-menu-item"><a class="sidebar-menu-link" href="#">The Island</a></li>
+                        <li class="sidebar-menu-item"><a class="sidebar-menu-link" href="#">The Food</a></li>
+                    </ul>
+                </div>
+
+                <div class="article-main-col">
+                    <h1>The City</h1>
+                    <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+                    <div class="article-gallery">
+                        <div class="article-gallery-img" style="background-image: url(img/article-gallery/1.jpg)"></div>
+                        <div class="article-gallery-img" style="background-image: url(img/article-gallery/2.jpg)"></div>
+                        <div class="article-gallery-img" style="background-image: url(img/article-gallery/3.jpg)"></div>
+                        <div class="article-gallery-img" style="background-image: url(img/article-gallery/4.jpg)"></div>
+                        <div class="article-gallery-img" style="background-image: url(img/article-gallery/5.jpg)"></div>
+                        <div class="article-gallery-img" style="background-image: url(img/article-gallery/6.jpg)"></div>
+                    </div>
+                </div>
+
+                <div class="article-right-col">
+                    <div class="sidebar-page-list">
+                        <div class="sidebar-page-item">
+                            <h2>What?</h2>
+                            <p>Chania is a city on the island of Crete.</p>
+                        </div>
+                        <div class="sidebar-page-item">
+                            <h2>Where?</h2>
+                            <p>Crete is a Greek island in the Mediterranean Sea.</p>
+                        </div>
+                        <div class="sidebar-page-item">
+                            <h2>How?</h2>
+                            <p>You can reach Chania airport from all over Europe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p class="footer-info">Resize the browser window to see how the content respond to the resizing.</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

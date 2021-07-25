@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    
+        .eat-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: green;
+            color: white;
+        }
+        
+        .drink-btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: blue;
+            color: white;
+        }        
+    
+    
+    </style>
+</head>
+<body>
+    <div class="main">
+        <button class="eat-btn" id="eat-btn">Eat me</button>
+        <a href="" class="change-btn">Ссылка после кнопки</a>
+    </div>
+    
+    <script>
+    /*
+    Напишите функцию replaceElement, заменяющую один DOM-элемент на другой.
+    В качестве первого аргумента она получает ссылку на старый элемент, 
+    в качестве второго - сссылку на новосозданный новый элемент.
+    
+    Допишите код так, чтобы при клике на кнопку с id="eat-me"  
+    ее место занимала кнопка с классом drink-me и текстом "Drink me"
+    */
+    const oldBtn = document.getElementById('eat-btn');
+
+    oldBtn.addEventListener('click', function () {
+        const newButton = document.createElement(`button`);
+        newButton.classList.add(`drink-btn`);
+        newButton.textContent = `Drink me`;
+        replaceElement(this,newButton);
+    });
+
+    function replaceElement(oldElem,newElem) {
+        oldElem.after(newElem);
+        oldElem.remove();
+    }
+    
+    </script>
+</body>
+</html>

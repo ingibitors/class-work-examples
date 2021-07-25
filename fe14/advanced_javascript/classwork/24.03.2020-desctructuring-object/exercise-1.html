@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+<!--  Напишите функцию createWarrior, которая принимает в себя большой объект
+ с полями "name", "lastName", "weapon", "status",
+ и создает и возвращает новый объект - warrior,
+ с полями name, status и weapon.
+ Используйте деструктуризацию
+ -->
+<script>    
+
+
+    const man = {
+        "first name": "Джейме",
+        "last name": "Ланнистер",
+        "weapon": "Верный Клятве",
+        "status": "лорд-командующий",
+    };    
+    
+    const warrior = createWarrior(man);
+    console.log(warrior); // выведет {name: "Джейме", status: "лорд-командующий", weapon: "Верный Клятве"}
+
+    function createWarrior({"first name": name, weapon, status}) {
+        /*
+        var name = obj['first name'];
+        var status = obj.status;
+        var weapon = obj.weapon;
+        */
+        const warrior = { name, status, weapon };
+
+        return warrior;
+    }    
+    
+</script>
+
+</body></html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    Напишите функцию, которая конвертируют одну валюту в другую (грн/дол/евро).
+    Аргументы функции: 
+    - сумма;
+    - в какую валюта конвертировать;
+    - из какой валюты.
+    
+    Если 3й параметр не указан - значит конвертация происходит из грн. Подумайте как сделать это красиво.
+*/
+
+        function convertMoney(sum, to, from = 'UAH'){
+            const currents = {
+                USD: 25.00,
+                EUR: 28.00,
+                UAH: 1
+            };
+
+            const ratio = currents[from]/currents[to];
+
+            return sum*ratio;
+            
+        }
+
+        console.log(convertMoney(1000, 'EUR', 'UAH'));
+    </script>
+</body>
+</html>

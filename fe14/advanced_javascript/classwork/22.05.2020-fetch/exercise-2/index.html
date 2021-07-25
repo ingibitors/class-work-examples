@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="wrapper fadeInDown pt-4">
+        <div id="formContent">
+
+            <!-- Login Form -->
+            <form id="login-form" action="http://danit.com.ua/login-json">
+                <input type="text" class="fadeIn second" name="login" placeholder="login" required>
+                <input type="text" class="fadeIn third" name="password" placeholder="password" required>
+                <input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+        </div>
+    </div>
+
+<!--  Напишите AJAX-запрос методом POST на адрес "http://danit.com.ua/login-json" для
+  Авторизации пользователя. Если пользователь ввел правильный логин и
+  пароль - нужно вывести под формой сообщение "Вы авторизированы!" и сохранить полученный токен в localStorage.
+  Если неправильный - вывести сообщение "Логин или пароль неверные, попробуйте еще раз".
+  Тестовые правильные данные:
+  login: Mandor
+  password: Savall
+  
+  данные нужно передавать в формате JSON
+  
+ Пример успешного ответа:
+{
+    "status": "Success",
+    "token": "644523423423434"
+}
+Пример неуспешного ответа:
+ 
+{
+    "status": "Error",
+    "message": "Login or password are incorrect",
+    "token": null
+}
+  
+  Для написания кода используйте fetch. 
+  -->
+
+    <script>
+      console.log(localStorage.getItem('token'));
+      const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', sendRequest)
+
+       function sendRequest(e){
+           e.preventDefault();
+           const login = this.querySelector('[name="login"]').value;
+           const password = this.querySelector('[name="password"]').value;
+
+           const body = {
+               login,
+               password
+           };
+
+           const request = fetch('http://danit.com.ua/login-json', {
+               method: 'POST',
+               headers: {
+                'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(body)          
+           });
+           
+           request.then(response => {
+               if (!response.ok) {
+                   throw new Error('Ошибка');
+               } 
+
+               return response.json();
+           })
+           .then(result => {
+               const message = (result.status === 'Success') ? 'Вы авторизированы!' : 'Логин или пароль неверные, попробуйте еще раз';
+               if(result.status === 'Success') {
+                    localStorage.setItem('token', result.token);
+                } 
+            this.insertAdjacentHTML('afterend', message);
+           })
+           .catch(error => console.log(error))
+       };
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body>
+   
+   <form action="" id="greate-house-count">
+       <input type="text" name="count" placeholder="Введите количестве великих домов, которое вы хотите видеть на экране">
+      <!-- <input type="text" name="age" placeholder="Введите желаемый возраст"> -->
+       <input type="submit" value="Показать">
+   </form>
+   
+    <ul id='greate-houses'>
+
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        /*
+        Напишите код, который работает так:
+        1. Пользователь вводит в форму количестве Великих домов, которые он хочет видеть, и нажимает на кнопку "Показать".
+        2. После чего отправляется GET запрос с параметром count=количествоДомов по адресу "http://danit.com.ua/westeros-great-houses-json".
+        Ответ должен быть в виде массива объектов вида: 
+        {
+            "name": "Ланнистеры",
+            "words": "Услышь мой рёв!",
+            "head": "Тайвин Ланнистер",
+            "heir": "Джейме Ланнистер",
+            "place": "Утес Кастерли"
+        }
+        
+        Используя полученный ответ, ыыведите внутри ul с id="greate-houses" список первых Великих домов Вестероса с данными о них: Глава, наследник, девиз, резиденция - в виде вложеного списка. Пример вывода:
+        <li>Ланнистеры:
+            <ul>
+                <li>Глава: Тайвин Ланнистер.</li>
+                <li>Наследник: Джейме Ланнистер.</li>
+                <li>Девиз: Услышь мой рёв!</li>
+                <li>Резиденция: Утес Кастерли.</li>
+            </ul>
+        </li>        
+        Используйте сокращенный синтаксис для GET-запросов
+        */
+$("#greate-house-count").on("submit", function(e) {
+    e.preventDefault();
+    const count = $(this).find("[name=count]").val();
+    // const params = $(this).serialize();
+    $.ajax({
+        url: `http://danit.com.ua/westeros-great-houses-json?count=${count}`,
+        dataType: "json",
+        success: function(data) {
+            // console.log(data);
+            const houses = data.map(({name, words, head, heir, place}) => {
+                return `<li>${name}
+            <ul>
+                <li>Глава: ${head}</li>
+                <li>Наследник: ${heir}</li>
+                <li>Девиз: ${words}</li>
+                <li>Резиденция: ${place}</li>
+            </ul>
+        </li>  `
+            }).join("");            
+            $("#greate-houses").html(houses);
+        }
+    })
+    
+})
+    </script>
+</body>
+
+</html>

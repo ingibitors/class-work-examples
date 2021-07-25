@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .drop-container {
+            float: left;
+            width: 30%;
+            min-height: 300px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            margin: 20px;
+            padding-bottom: 20px;
+        }
+        
+        .case-list {
+            list-style: none;
+            height: 250px;
+            padding: 10px;
+        }
+        
+        .case-item {
+            border: 1px solid darkgrey;
+            font-size: 20px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="drop-container">
+        <h2>Список дел</h2>
+        <ul class="case-list">
+            <li class="case-item" draggable="true">Item 1</li>
+            <li class="case-item" draggable="true">Item 2</li>
+            <li class="case-item" draggable="true">Item 3</li>
+            <li class="case-item" draggable="true">Item 4</li>
+        </ul>
+    </div>
+    <div id="in-progress" class="drop-container">
+        <h2>В процессе выполнения</h2>
+        <ul class="case-list"></ul>
+    </div>
+    <div id="finish" class="drop-container">
+        <h2>Сделанные</h2>
+        <ul class="case-list"></ul>
+    </div>
+</body>
+<script>
+    /*
+    Напишите код, который позволяет перемещать дела между 3 колонками туда и обратно (дела при этом должны попадать в ul с class="case-list" внутр колонки).
+    Сделайте его максимально универсальным.
+    */
+   const caseItems = document.querySelectorAll(".case-item");
+   const containers = document.querySelectorAll(".drop-container .case-list");
+
+    const store = {
+        dragElem: null,
+    };
+
+    function dragStart(e){
+        store.dragElem = this;
+    }
+
+    function dragOver(e){
+        e.preventDefault();
+    }
+
+    function drop(e){
+         const dragElem = store.dragElem;
+         if(e.target === this) {
+             this.append(dragElem);
+         }
+         else {
+            e.target.before(dragElem);
+         }
+          store.dragElem = null;
+    }
+
+    caseItems.forEach((elem)=>{
+        elem.addEventListener("dragstart", dragStart);
+    });
+
+    containers.forEach((elem)=>{
+        elem.addEventListener("dragover", dragOver);
+        elem.addEventListener("drop", drop);
+    });
+</script>
+
+</html>

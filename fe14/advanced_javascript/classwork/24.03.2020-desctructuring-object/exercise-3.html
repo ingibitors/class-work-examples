@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<!-- 
+   Напишите фунцию , который получает массив объектов и название свойств, которые должны быть в исходном объекте, и возвращает массив объектов, в котором есть нужные свойства.
+     Аргументы функции:
+      - массив объектов;
+      - перечень свойств, которые должны быть в возвращаемом массиве объектов
+       -->;
+    <script>
+        
+    const books = [
+        {
+            author: "Дарья Донцова",
+            name: "Дед Снегур и Морозочка",
+            article: "4342D",
+            price: 70
+        },
+        {
+            author: "Скотт Бэккер",
+            name: "Тьма, что приходит прежде",
+            article: "4421F",
+            price: 70           
+        },
+        {
+             author: "Дарья Донцова",
+            name: "Детектив на диете",
+            article: "4642D",
+            price: 70           
+        },
+        {
+            author: "Скотт Бэккер",
+            name: "Тысячекратная мысль",
+            article: "2344F",
+            price: 70           
+        }        
+    ];
+        function sliceArray(arr, property1, property2) {
+            const result = arr.map((item) => {
+                const obj = {
+                    [property1]: item[property1],
+                    [property2]: item[property2]
+                };
+                /* obj = {}
+                    obj[property1] = item[property1]
+                */
+                return obj;
+            });
+            return result;
+        }
+        const shortBooksInfo = sliceArray(books, "author", "name");
+        console.log(shortBooksInfo);
+        /*
+        Выведет:
+        [
+            {
+                author: "Дарья Донцова",
+                name: "Дед Снегур и Морозочка"
+            },
+            {
+                author: "Скотт Бэккер",
+                name: "Тьма, что приходит прежде"        
+            },
+            {
+                 author: "Дарья Донцова",
+                name: "Детектив на диете"     
+            },
+            {
+                 author: "Скотт Бэккер",
+                name: "Тысячекратная мысль"         
+            }        
+        ];       
+        */
+    </script>
+</body>
+</html>

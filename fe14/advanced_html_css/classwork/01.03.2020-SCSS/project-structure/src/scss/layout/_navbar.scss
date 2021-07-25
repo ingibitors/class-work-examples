@@ -1,0 +1,35 @@
+.navbar {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px 0;
+
+  &-row {
+    @include flex-between-center;
+  }
+
+  &-logo {
+    &-hexagon {
+    }
+  }
+
+  &-nav {
+    @include flex;
+
+    &-item {
+      margin-right: 20px;
+    }
+
+    &-link {
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import 'reset';
+
+:root {
+  --color1: #161619;
+  --color2: #fffafa;
+  --color3: grey;
+  --color4: orange;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: var(--color1);
+  background-color: var(--color2);
+  margin: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+::selection {
+  background-color: var(--color4);
+}
+
+.starting-point {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

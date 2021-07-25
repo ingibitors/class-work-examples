@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" id="add-product">
+    <input type="text" id="product-short-name" placeholder="Краткое название товара">
+    <input type="text" id="product-full-name" placeholder="Полное название товара">
+    <input type="text" id="product-article" placeholder="Артикул товара">
+    <input type="text" id="product-price" placeholder="Цена товара">
+    <select name="" id="product-type">
+        <option selected disabled>Тип товара</option>
+        <option value="notebook">Ноутбук</option>
+        <option value="phone">Телефон</option>
+    </select>
+    <input type="submit" value="Создать товар">
+</form>
+    <script>
+        /*
+        const products = [{
+            type: "notebook",
+            name: "lenovo",
+            price: 12000
+        }, {
+            type: "phone",
+            name: "Xiomi",
+            price: 8000
+        }];
+        */
+        const products = [];
+        const formAddProduct = document.getElementById("add-product");
+        formAddProduct.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const shortName = this.querySelector("#product-short-name");
+            const fullName = this.querySelector("#product-full-name");
+            const article = this.querySelector("#product-article");
+            const price = this.querySelector("#product-price");
+            const type = this.querySelector("#product-type");
+            const product = new Product(type.value, shortName.value, fullName.value, article.value, price.value);
+            products.push(product);
+            console.log(products);
+            resetInputs(shortName, fullName, article, price);
+        })
+
+        function resetInputs(...inputs) {
+            inputs.forEach(input => input.value = "");
+        }
+        
+        /*
+        const product = {
+            type: "notebook",
+            shortName: "Lenovo S120W",
+            fullName: "Lenovo S120W (S123X44 Z)",
+            article: 4542323,
+            price: 19600,
+            getStockPrice: function (stockValue) {
+                return this.price*((100 - stockValue)/100);
+            }
+        }
+        */
+        
+        function Product(type, shortName, fullName, article, price) {
+            this.type = type;
+            this.shortName = shortName;
+            this.fullName = shortName;
+            this.article = article;
+            this.price = price;
+            this.getStockPrice = function(stockValue) {
+                return this.price*((100 - stockValue)/100);
+            }
+        }
+
+        // const product1 = new Product("notebook", "Lenovo S120W", "Lenovo S120W (S123X44 Z)", 4542323, 19600);
+        // const product2 = new Product("notebook", "Lenovo S120W", "Lenovo S120W (S123X44 Z)", 4542323, 19600);
+
+        // console.log(product.type);
+        // console.log(product.price);
+        // console.log(product.getStockPrice(10));
+    </script>
+
+</body>
+</html>

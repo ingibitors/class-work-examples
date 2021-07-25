@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Отличая синтасиса стрелочных функций</h2>
+    <ul>
+        <li>Всегда Function Expression</li>
+        <li>Нет слова funcion до (), есть => после</li>
+        <li>Если один аргумент () можно не писать</li>
+        <li>Если тело функции состоит из одной строки, то можно убрать {} и слово return</li>
+
+        
+    </ul>
+    <script>
+      
+        const isLegal = (age) => {
+            return  (age >= 18);
+        }
+        
+    //    const isLegal = (age) => age >= 18;   // return (age >= 18);
+        
+//        console.log(isLegal(17));
+//        console.log(isLegal(19));
+        
+        
+        
+        const doctor = {
+            age: 19,
+            getAge() {
+                console.log(this);
+                const getDoctorAge = () => {
+                    console.log(this);
+                    return this.age;
+                }
+                return getDoctorAge;
+            }
+        }        
+        const getAge = doctor.getAge();
+        console.log(getAge());
+    </script>
+</body>
+</html>

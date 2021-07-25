@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="axios.min.js"></script>
+    <script>
+        
+        const urls = ["http://danit.com.ua/products", "http://danit.com.ua/categories"];
+        const requests = urls.map(url => axios.get(url));
+
+        axios.all(requests).then(responses => {
+            // const results = responses.map(response => response.data);
+            const results = responses.map(({data}) => data);
+            console.log(results);
+        })
+    </script>
+</body>
+</html>

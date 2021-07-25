@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .workers-list {
+            display: flex;
+        }
+        .worker {
+            width: 300px;
+            border: 1px solid;
+            padding: 15px;
+            margin-right: 20px;
+        }
+        .workers-pagination {
+            list-style: none;
+            display: flex;
+        }
+
+        .pagination-page {
+            padding: 5px;
+            border: 1px solid;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .pagination-page.current {
+            background-color: dimgrey;
+            cursor: default;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="workers-list" id="workers-list">
+<!--
+         <div class="worker">
+            <h3 class="worker-name"></h3>
+            <p class="worker-job"></p>
+            <a href="" class="worker-phone"></a>
+            <p class="worker-email"></p>
+        </div> 
+-->
+    </div>
+    <ul class="workers-pagination">
+        <li class="pagination-page current">1</li>
+        <li class="pagination-page">2</li>
+        <li class="pagination-page">3</li>
+    </ul>
+
+<script>
+    /*
+    Напишите простейщую пагинацию: при загрузке на стрницу выводятся первые 3 сотрудника. При клике на "2 страница" - они исчезают и выводятся следующие 3.
+    Для этого нужно отправить GET-запрос по адресу: "http://danit.com.ua/workers" и в параметрах указать номер страницы: page=1 и т.д.
+    Если его не указать - будут выведены все сотрудники
+    */
+    </script>
+
+</body>
+
+</html>

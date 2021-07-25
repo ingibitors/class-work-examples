@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        const townsUrl = "http://danit.com.ua/free-towns-list-json";
+        const response = await fetch(townsUrl);
+        // response.then(result => console.log(result));
+        */
+       
+        const request = fetch("http://danit.com.ua/free-towns-list-json");
+        request.then(response => {
+            console.log(response);
+            return response.json();
+        }).then(result => console.log(result));
+        
+    </script>
+</body>
+</html>

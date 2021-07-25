@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Напишите для объекта student методы:
+   - getAvarageScore - считает среднюю оценку из тех, кто есть в свойство tabel, и возвращает ее;
+   - getBestScore - считает лучшую оценку из тех, кто есть в свойство tabel, и возвращает ее и название предмета;
+   - getWorthScore - считает худщую оценку из тех, кто есть в свойство tabel, и возвращает ее и название предмета;
+     Сделайте это максиально изящно, используя новые методы Object и методы массива.
+     
+       После чего выведите в консоль результат работы каждого метода с периодичностью в 2 сек.  -->
+    <script>
+        const student = {
+            name: "Тацумаки Смерч Ужаса",
+            tabel: {
+                "магия": 12,
+                "презрение к слабым": 11,
+                "сочувствие слабым": 3,
+                "любовь к сестре": 8,
+                "комплекс из-за невысокого роста": 20
+            },
+            getAvarageScore: function() {
+                this.tabel
+            },
+            getBestScore: function() {
+            },
+            getWorthScore: function() {
+            },
+        };
+
+        setTimeout(student.getAvarageScore.bind(student), 1000);
+        setTimeout(student.getBestScore.bind(student), 2000);
+        setTimeout(student.getWorthScore.bind(student), 3000);
+    </script>
+</body></html>

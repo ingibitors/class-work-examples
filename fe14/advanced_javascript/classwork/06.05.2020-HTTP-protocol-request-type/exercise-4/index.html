@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="filter-westeros-greate-houses">
+        <input type="checkbox" name="Lannister" value="Lannister">
+        <label for="Lannister">Lannister</label><br>
+        <input type="checkbox" name="Targaryen" value="Targaryen">
+        <label for="Targaryen">Targaryen</label><br>
+        <input type="checkbox" name="Stark" value="Stark">
+        <label for="Stark">Stark</label><br>
+        <input type="checkbox" name="Baratheon" value="Baratheon">
+        <label for="Baratheon">Baratheon</label><br>
+        <input type="checkbox" name="Tully" value="Tully">
+        <label for="Tully">Tully</label><br>
+        <input type="checkbox" name="Arryn" value="Arryn">
+        <label for="Arryn">Arryn</label><br>
+        <input type="checkbox" name="Tyrell" value="Tyrell">
+        <label for="Tyrell">Tyrell</label><br>
+        <input type="checkbox" name="Martell" value="Martell">
+        <label for="Martell">Martell</label><br>  
+        <input type="checkbox" name="Greyjoy" value="Greyjoy">
+        <label for="Greyjoy">Greyjoy</label><br>                                                               
+        <input type="submit" value="Узнать">
+    </form>
+
+    <script>
+        /*
+    Напишите код, который работает так: 
+    1. Пользователь отмечает галочками те Великие дома Вестероса, подробную информацию о которых он хочет увидеть.
+    2. Нажимает на кнопку "Узнать".
+    3. Отправляется AJAX-запрос типа POST по адресу http://danit.com.ua/westeros-great-houses для получения нужной информации.
+    Запрос должен быть в формате JSON вида:
+    {
+	"houseList": ["Lannister", "Martell"];
+    }
+    Вы передаете объект, свойство которого houseList представляет собой массив названий Великих домов на англ языке. 
+    Формат ответа:
+    [
+        {
+            "name": "Lannister",
+            "info": {
+                "Девиз": "Услышь мой рёв!",
+                "Глава": "Тайвин Ланнистер",
+                "Наследник": "Джейме Ланнистер",
+                "Резиденция": "Утес Кастерли"
+            }
+        },
+        {
+            "name": "Martell",
+            "info": {
+                "Девиз": "Непреклонные, несгибаемые, несдающиеся.",
+                "Глава": "Доран Мартелл",
+                "Наследник": "Тристан Мартелл",
+                "Резиденция": "Солнечное копье"
+            }
+        }
+    ]    
+    */
+
+    </script>
+</body>
+
+</html>

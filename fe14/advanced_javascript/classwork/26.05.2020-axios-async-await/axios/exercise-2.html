@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <select id="house-name" name="house-name">
+        <option>Выберите дом</option>
+        <option value="Lannister">Ланнистеры</option>
+        <option value="Targaryen">Таргариены</option>
+        <option value="Stark">Старки</option>
+        <option value="Baratheon">Баратеоны</option>
+        <option value="Tully">Талли</option>
+        <option value="Arryn">Аррены</option>
+        <option value="Tyrell">Тиррелы</option>
+        <option value="Martell">Мартеллы</option>
+        <option value="Greyjoy">Грейджои</option>
+    </select>
+
+    <script src='axios.min.js'></script>
+    
+    <script>
+    /*
+    Напишите код, который работает так: 
+    1. Пользователь выбирает великий дом, и под списом появляется информация о нем.
+    2. Для того, чтобы узнать нужную информацию, отправьте POST запрос по адресу "http://danit.com.ua/westeros-great-house".
+    Тело запроса должно выглядеть так: 
+    {
+	   "house": "Lannister"
+    }
+    3. Для авторизации используйте заголовок "Authorization" со значением "Bearer eyJ0eXAiOiJKV1QiL"
+    4. Ответ вы получите в формате:
+    {
+        "words": "Услышь мой рёв!",
+        "head": "Тайвин Ланнистер",
+        "heir": "Джейме Ланнистер",
+        "castle": "Утес Кастерли"
+    }   
+    Используйте axios
+    */
+
+    const req = axios.create({
+        baseURL: 'http://danit.com.ua',
+        headers: {
+            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiL'
+        }
+    });
+
+    const select = document.getElementById('house-name');
+    select.addEventListener('change', getHouseInfo);
+
+    function getHouseInfo() {
+        req.post("/westeros-great-house", {"house": this.value}).
+        then(({data}) => {
+            const html = `<div><ul><li>Девиз: ${data.words}</li><li>Глава: ${data.head}</li><li>Наследник: ${data.heir}</li><li>Замок: ${data.castle}</li></ul></div>`;
+            this.insertAdjacentHTML('afterend', html);
+        }).catch(error => console.log(error))
+    }
+    </script>
+</body>
+</html>

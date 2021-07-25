@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function getRequest(url){
+            const {data} = await axios.get(url);
+            const {id} = data;
+            const {data: result} = await axios.get(`${url}/${id}`);
+            console.log(result);
+
+            const request = axios.get("url");
+            request.then(({data}) => {
+                const {id} = data;
+                const request2 = axios.get(`${url}/${id}`);
+                request2.then(({data}) => {
+                    console.log(data);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

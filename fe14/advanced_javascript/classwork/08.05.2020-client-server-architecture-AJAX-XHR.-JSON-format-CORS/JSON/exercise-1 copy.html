@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="free-towns"></div>
+    <script>
+        /*
+        Отправьте AJAX-запрос на адрес "http://danit.com.ua/free-towns-list-json".
+        В качестве ответа вы получите массив строк: [ "Браавос", "Волантис", "Квохор", "Лис", "Лорат", "Мир", "Норвос", "Пентос",
+    "Тирош"];
+    
+        Используя полученный ответ, Выведите внутри div с id="free-towns"
+        список всех Вольных городов Эссоса.
+        */
+       const request = new XMLHttpRequest();
+        request.open('GET', "http://danit.com.ua/free-towns-list-json");
+        request.send()
+        request.onload = function() {
+                if (request.status >= 300) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+                    console.log(`Ошибка ${request.status}: ${request.statusText}`); // Например, 404: Not Found
+                }
+                else { 
+                     const result =  JSON.parse(request.response); 
+                     console.log(result);
+                     const tounList = result.map(item =>{
+                         return `<li>${item}</li>`
+                     }).join("");
+                     const div = document.getElementById('free-towns')
+                     div.innerHTML = tounList;
+                }
+            };
+        request.onerror = function(){
+            alert('Запрос не удался.')
+        }
+
+    </script>
+</body></html

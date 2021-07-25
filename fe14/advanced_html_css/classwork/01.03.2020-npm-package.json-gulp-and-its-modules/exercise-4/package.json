@@ -1,0 +1,19 @@
+{
+  "name": "exercise-3",
+  "version": "1.0.0",
+  "description": "1. Создайте проект и установите в него Gulp.\r 2. Напишите таску на объединение и минификацию всех css файлов из папки \"src/css\" в один файл - \"style.min.css\", а также перемещение его в папку \"dist/css/\".\r 3. Напишите таску очистки папки \"dist/\".\r 4. Объедините таски из 2 и 3 пунктов в таску \"dev\".",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1"
+  }
+}

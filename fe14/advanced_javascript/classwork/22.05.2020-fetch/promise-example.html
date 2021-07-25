@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const sendeRequest = (type, url) => {
+            const answer = new Promise(function(resolve, reject) {
+                const request = new XMLHttpRequest();
+                request.open(type, url);
+                request.send();
+                request.onload = function() {
+                    if (request.status < 300) {
+                        resolve(request.response);
+                    } else {
+                        reject(request.statusText);
+                    }
+                }
+            });
+            return answer;
+        }
+
+        const request = sendeRequest("GET", "http://danit.com.ua/user-profile");
+        console.log(request);
+
+        request.then(result => {
+            console.log(result);
+        }).catch(error => {
+            console.log(error);
+        });
+
+
+    </script>
+</body>
+
+</html>

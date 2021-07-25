@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const productUrl = "http://danit.com.ua/products/1";
+        
+        /*
+        // Запрашиваем товара, и после того, как получили информацию о нем - запрашиваем информацию о его категории,
+        // чтобы не выводить пользователю  сообщение "Товар: Lenovo. Категория: 1"
+        // без async/await, с помощью then это выглядит так:
+        request.then(response => response.json())
+            .then(result => {
+                const {category} = result;
+                const request2 = fetch(`http://danit.com.ua/categories/${category}`);
+                request2.then(response => response.json())
+                    .then(name => {
+                        const product = {
+                            name: result.name,
+                            category: name
+                        };
+                        console.log(product)
+                    })
+            });        
+        */
+
+        
+        /*
+        // С помощью async/await это выглядит так:
+        const product = getRequest(productUrl);
+        product.then(({name, category}) => {
+            document.body.insertAdjacentHTML("beforeend", `<p>Товар: ${name}. Категория: ${category}`)
+        });
+        
+        async function getRequest(url){
+            const response = await fetch(url);
+            const productInfo = await response.json();
+            const {category} = productInfo;
+
+           const response2 = await fetch(`http://danit.com.ua/categories/${category}`);
+           const name = await response2.json();
+           const product = {
+                name: productInfo.name,
+                category: name
+            };
+            return product;
+        }
+        */
+    </script>
+</body>
+</html>

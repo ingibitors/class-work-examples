@@ -1,0 +1,7 @@
+module.exports = {
+  extends: 'react-app',
+  rules: {
+    'jsx-a11y/accessible-emoji': 0,
+    quotes: [1, 'single'],
+  },
+};

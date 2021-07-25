@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root"></div>
+<!--<button id="click-me">Click me</button>-->
+<script>
+
+    /*
+    напишите объекту btn метод render, который рисует кнопку в переданном DOM-элементе кнопку с текстом, храняющимся в свойстве
+    btn.text, и вешает на нее обработчик click, который при клике меняет текст на храняющийся в свойстве secondText
+    */
+    const btn = {
+
+        text: "Click me",
+        secondText: "Eat me",
+        render: function (id, container) {
+
+            const button = document.createElement('button');
+            button.id = id;
+            button.innerText = this.text;
+            
+            button.addEventListener('click', ({target}) => {
+                // var {target} = e;
+                // console.log(this);
+                // console.log(target);
+                // (условие) ? действие: "";
+                target.innerText = (target.innerText === this.text) ? this.secondText : this.text;
+            });
+            
+            container.append(button);
+        }
+    }
+    /*
+    1. Создать DOM-элемент button с переданным id
+    2. Добавить ему в качестве текстового содержимого значение поля text объекта
+    3. Повесить на него обработик click.
+    4. Внутри обработчика проверять какой текст содержит кнопка, и если это текст и свойства
+    text, то менять его на значение свойства secondText, и наоборот.
+    5. Вывести созданнную кнопку на экран внутрь переданного DOM-Элемента
+    */
+    btn.render("click-me", document.getElementById("root"));
+</script>
+</body>
+</html>

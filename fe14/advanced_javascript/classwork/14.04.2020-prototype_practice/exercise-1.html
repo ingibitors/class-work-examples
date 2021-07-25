@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    Создайте 3 объекта: productPhone, productNotebook, productWashingMachine, с такими свойствами:
+    - название;
+    - полное название;
+    - артикул товара;
+    - цена;
+    - цена доставки;
+    
+    и вынесите повторяющиеся методы в общий один общий объект.
+    */
+
+    const product = {
+        getDeliveryPrice() {
+          const deliveryPrice = (this.price < 1000) ? 50 : 0;
+          return deliveryPrice;
+       }
+    }
+
+   const productPhone = {
+       shortName: 'Nokia',
+       fullName: "Nokia 1100",
+       article: '176543783',
+       price: 200
+   }
+
+    productPhone.__proto__ = product;
+    console.log(productPhone.getDeliveryPrice());
+
+   const productNotebook = {
+       shortName: 'ASUS',
+       fullName: "ASUS RS134425",
+       article: '6764849',
+       price: 12000,
+       delivery: 0
+   }
+
+   productNotebook.__proto__= product;
+
+   const productWashingMachine = {
+       shortName: 'LG',
+       fullName: "LG SPA4537",
+       article: '',
+       price: 12000,
+       delivery: 0
+   }
+
+   productWashingMachine.__proto__= product;
+
+    </script>
+</body>
+</html>

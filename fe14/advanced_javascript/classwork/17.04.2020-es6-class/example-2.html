@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Employee {
+            constructor(company, name, status, birthday, ID) {
+                this.company = company;
+                this.name = name;
+                this.status = status;
+                this.birthday = birthday;
+                this.ID = ID;
+            }
+
+            set ID(newID){
+                if(Number.isInteger(newID) && newID > 0 && newID.toString().length === 10) {
+                    this._ID = newID;
+                    return true;
+                }
+                throw new Error("ID должен представлять собой целое число из 10 цифр")
+            }
+            
+            get ID(){
+                return this._ID;
+            }
+            
+            getAge() {
+                const today = new Date();
+                const birthDate = new Date(this.birthday);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                let monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+        }
+
+        let receptionGirl1 = null;
+        try {
+            receptionGirl1 = new Employee("Dan.IT", "Кристина", "reception girl", "12.12.1990", 1242234986);
+        }
+        catch(error) {
+            alert(error.message)
+        }
+        console.log(receptionGirl1);
+        
+        // receptionGirl1.ID = 1242224986;
+        
+        // console.log(receptionGirl1.ID);
+        // try {
+        //     receptionGirl1.ID = "332355";
+        // }
+        // catch (error) {
+        //     alert(error.message);
+        // }
+        // console.log(receptionGirl1.ID);
+
+    </script>
+
+</body>
+
+</html>

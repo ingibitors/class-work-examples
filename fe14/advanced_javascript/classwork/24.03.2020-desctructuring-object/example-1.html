@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <script>
+        const grandlord = {
+            name: "Тайвин",
+            lastName: "Ланнистер",
+            status: "глава дома Ланнистеров",
+            castle: "Утёс Кастерли"
+        };
+        
+        // если имя переменной совпадает с именем свойства объекта
+        // const {name, lastName} = grandlord;
+        /*
+        Это эквивалетно записи
+        const name = grandlord.name;
+        const lastName = grandlord.lastName;
+        */
+
+        // console.log(name);
+        // console.log(lastName);
+        
+        /*
+        // Если имя переменной не совпадает с именем свойства объекта, то в фигурных скобочках вы пишете так: имяСвойстваОбъекта: имяПеременной
+        // grandlord.wife = "леди Джоанна";
+        const {name: userName, lastName: userLastName, wife: userWife = "не женат"} = grandlord;
+        console.log(userName);
+        console.log(userLastName);
+        console.log(userWife);
+        */
+        
+        /*
+        let userName = "";
+        let userLastName = "";
+        // вы также можете сохранять значения в уже объявленные переменные, если они были объявлены не через const, но тогда должны все выражение заключать в круглые скобки (потому что иначе JavaScript будет воспринимать круглые скобки как создание объекта)
+        ({name: userName, lastName: userLastName} = grandlord);
+        */
+        /*
+        const userName = grandlord.name;
+        const userLastName = grandlord.lastName;
+        */
+       /*
+        console.log(userName);
+        console.log(userLastName);        
+        */
+        
+        /*
+        // кроме того, вы можете сохранять значения в свойства другого объекта с помощью деструктуризации
+        const user = {};
+        ({name: user.name, lastName: user["last name"]} = grandlord);
+        
+        /*
+        user.name = grandlord.name;
+        user.lastName = grandlord.lastName;
+        */
+        // console.log(user);
+        
+        /*
+        // вы также можете использовать оператор ... - rest, для того, чтобы собрать все свойства объекта, которым не хватило  отдельных переменных, в другой объе
+        const {name, lastName, ...info} = grandlord;
+        console.log(info);
+        */
+
+        /*
+        const king = {
+            name: "Роберт",
+            "last name": "Баратеон"
+        }
+
+        const {name: kingName, ["last name"]: kingLastName} = king;
+        console.log(kingName);
+        console.log(kingLastName);
+        */
+    </script>
+</body>
+
+</html>

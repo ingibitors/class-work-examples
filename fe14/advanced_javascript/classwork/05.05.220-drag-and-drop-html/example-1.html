@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+        .items, .container {
+            float: left;
+            width: 350px;
+            height: 500px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+            margin-right: 40px;
+        }
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 15px;
+            color: red;
+            border: 1px solid red;
+            border-radius: 5px;
+        }
+        
+        .items img, .items a, .items span {
+/*            cursor: pointer;*/
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <p>Drag and Drop Example</p>
+
+    <div class="items">
+        <img class="drag-elem" id="drag-img" src="https://static-s.aa-cdn.net/img/ios/1055278268/6ef837cc5b206e997831c8b853b806d3?v=1" draggable="true" >
+        <a href="#" id="drag-link" class="btn  drag-elem" draggable="true">Drag me!</a>
+        <span id="drag-span" class="btn drag-elem" draggable="true">Drag span!</span>
+    </div>   
+   
+    <div id="container" class="container">
+        <h2>Собери их всех!</h2>
+    </div>
+    <br>
+
+    <script>
+
+        let dragElement = null;
+
+        function allowDrop(e) {
+            e.preventDefault();
+        }
+
+        function drag(e) {
+            // e.dataTransfer.setData("id", e.target.id);
+            /*
+            e.target.dataset.dragId = "DragElem";
+            e.dataTransfer.setData("dragId", e.target.dataset.dragId);
+            */
+            dragElement = e.target;
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            /*
+            const id = e.dataTransfer.getData("id");
+            const dragElement = document.getElementById(id);
+            */
+            /*
+            const dragId = e.dataTransfer.getData("dragId");
+            const elem = document.querySelector(`[data-drag-id=${dragId}]`);
+            elem.dataset.dragId = "";
+            */
+            e.target.append(dragElement);
+            dragElement = null;
+        }
+
+        /*
+        const dragImg = document.getElementById("drag-img");
+        dragImg.addEventListener("dragstart", drag);
+
+        const dragLink = document.getElementById("drag-link");
+        dragLink.addEventListener("dragstart", drag);
+
+        const dragSpan = document.getElementById("drag-span");
+        dragSpan.addEventListener("dragstart", drag);
+        */
+       const dragElems = document.querySelectorAll(".drag-elem");
+       dragElems.forEach(elem => elem.addEventListener("dragstart", drag));
+
+        const container = document.getElementById("container");
+        container.addEventListener("dragover", allowDrop);
+        container.addEventListener("drop", drop);
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+@mixin flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin link-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+@mixin flex-center {
+  @include flex;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  @include flex;
+  justify-content: space-between;
+}
+
+@mixin flex-between-center {
+  @include flex-between;
+  align-items: center;
+}

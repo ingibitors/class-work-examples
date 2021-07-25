@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // "Объявляем", то есть создаем функциюю
+        function calcCircleArea(radius) {
+            const circleArea = 3.1516926 * radius ** 2;
+            return circleArea;
+        }
+
+        const result1 = calcCircleArea(10); //  вызываем ее справа от знака '=', передавая ей значение. В результате в переменную 'result' будет сохранено посчитанное значение
+        /*
+        var radius;
+        radius = 10;
+        const circleArea = 3.1516926 * radius ** 2;
+        result = circleArea;
+        delete radius;
+        delete circleArea;
+        */
+
+        const result2 = calcCircleArea(15);
+        /*
+        var radius;
+        radius = 15;
+        const circleArea = 3.1516926 * radius ** 2;
+        result = circleArea;
+        delete radius;
+        delete circleArea;
+        */
+        console.log(result1); // выводим результат на экран
+    </script>
+</body>
+
+</html>

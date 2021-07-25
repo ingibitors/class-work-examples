@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body>
+    <!--  Подключаем JQuery -->
+    <script src="jquery-3.4.1.min.js"></script>
+
+    <script>
+        // сокращенный синтаксис GET-запроса с помощью AJAX. 
+        $.get('http://danit.com.ua/dragons-list-json', "json", function(data) {
+            console.log(data);
+        });
+        
+        // еще более сокращенный синтаксис GET-запроса, когда вы точно знаете, что получите данные в формате JSON
+        $.getJSON('http://danit.com.ua/dragons-list-json', function(data) {
+            console.log(data);
+        });        
+    </script>
+</body></html>

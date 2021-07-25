@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="main-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad beatae consectetur ducimus eos excepturi expedita fugiat hic id, illo ipsa itaque iure labore laboriosam minima modi neque nihil nobis non nulla, praesentium qui rem tempora totam velit, vero voluptatem. Ab eligendi error laboriosam maiores, nihil vel voluptate. Dolor esse harum, molestiae quia quod sapiente totam vel? Cumque, quos, voluptatem! Adipisci asperiores at cupiditate deserunt dicta dignissimos dolor dolore dolorem ea eius fugiat, harum illo itaque iure modi nam non odit perspiciatis porro praesentium quisquam similique soluta sunt tenetur unde voluptatem voluptates, voluptatum. Amet deleniti distinctio dolor doloremque fugit id.</p>
+<button id="increase-size">increase</button>
+<script>
+    
+    // объект style - уникальный для каждого DOM-элемента
+    const {style} = document.getElementById('main-text');
+    // const style = document.getElementById('main-text').style;
+    style.fontSize = '14px';
+
+    const btn = document.getElementById('increase-size');
+    btn.addEventListener('click', function () {
+        const {fontSize} = style;
+    // console.log(parseInt(fontSize));
+    // 14px = 14
+        style.fontSize = parseInt(fontSize)*1.5 + 'px';
+    });
+</script>
+</body>
+</html>

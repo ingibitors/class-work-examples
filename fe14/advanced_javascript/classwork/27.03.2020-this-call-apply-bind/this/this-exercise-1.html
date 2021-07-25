@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- напишите метод caclAverageScore, 
+        который будет считать среднюю оценку внутри объекта tabel. 
+        Оценка – это свойство объекта, имеющее тип «строка», 
+        значение которого представляет собой либо целое число 
+        (типа Number), либо целое число в виде строки. -->
+    <script>
+        const tabel = {
+            "biology": 11,
+            "phisic": 8,
+            "history": 12,
+            "mathematic": 6,
+            "sport": "6",
+            name: "Генос",
+            100: 20,
+            "last name": "Кибердемон",
+            caclAverageScore(){
+                // console.log(Object.entries(this));
+                let scoreSum = 0;
+                let scoreCount=0;
+                for (const [key, value] of Object.entries(this)) {
+                    if (typeof key === "string" && Number.isInteger(+value) && +value >= 0){
+                        scoreSum+= +value;
+                        scoreCount++;
+                    }
+                }
+                return scoreSum/scoreCount;
+            }
+        };
+
+        console.log(tabel.caclAverageScore());
+
+        
+    </script>
+</body></html>

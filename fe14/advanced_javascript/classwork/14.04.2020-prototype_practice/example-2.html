@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const receptionGirl1 = {
+            // [[Prototype]] = Object
+            company: "Dan.IT",
+            name: "Кристина",
+            status: "reception girl",
+            birthday: "12.12.1990",
+            getAge() {
+                const today = new Date();
+                const birthDate = new Date(this.birthday);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                let monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+        };
+
+        console.log(receptionGirl1.hasOwnProperty("company"));
+        /*
+        if(receptionGirl1.hasOwnProperty) {
+            console.log(receptionGirl1.hasOwnProperty("company"));
+        }
+        else {
+            if(receptionGirl1[[Prototype]].hasOwnProperty) {
+                console.log(receptionGirl1[[Prototype]].hasOwnProperty("company"));
+            }
+            else {
+                throw new Error("hasOwnProperty not a function")
+            }
+            
+        }
+        */
+        console.log(receptionGirl1.hasOwnProperty("age"));
+        
+        console.log(receptionGirl1);
+        console.log(Object);
+        console.log(Object.hasOwnProperty);
+        
+    </script>
+</body>
+
+</html>

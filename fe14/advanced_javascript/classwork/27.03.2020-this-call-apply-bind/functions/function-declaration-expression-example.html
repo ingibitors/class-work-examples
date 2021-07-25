@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script src="functions.js"></script>
+    <script>
+        
+        /* JavaScript переносит в начало кода все функции, объявленные через Function Declaration
+        function isAdult(age) { 
+            return (age > 18);
+        }          
+        */
+        
+        console.log(isAdult(19)); // Вызываем функцию до ее объявления
+        
+        /*Function Declaration - объявление функции через синтаксис: function имяФункции. Когда JavaScript просматривает код до его выполнения, он находит такие функции и поднимает их наверх, в самое начало кода. Вы этого не видите, но для него это так */
+        function isAdult(age) { 
+            return (age > 18);
+        }
+        
+        const studentScores = [7, 9, 10, 3, 5, 12, 3, 11];
+        console.log(avarageScore(studentScores)); 
+        
+        /*
+        вызываем avarageScore() и видим ошибку, потому что Function Expression создаются в процессе выполнения выражения, в котором созданы, в данном случае – функция будет создана при операции присваивания avarageScore = function(scoreArr)
+        */
+
+        const avarageScore = function(scoreArr) {
+            const scoreSum = scoreArr.reduce(function(sum, current){
+                return sum + current;
+            })
+            return scoreSum / scoreArr.length;
+        };
+
+    </script>
+</body>
+</html>

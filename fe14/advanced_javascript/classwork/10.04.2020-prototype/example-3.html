@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+        const employee = {
+            /*
+            В момент создания:
+            [[Prototype]] = Object          
+            */
+            company: "Dan.IT",
+            getAge() {
+                const today = new Date();
+                const birthDate = new Date(this.birthday);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                let monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }            
+        }
+        
+        const receptionGirl1 = {
+            /*
+            В момент создания:
+            [[Prototype]] = Object            
+            receptionGirl1.__proto__ = function(obj) {
+                if(typeof obj === "object" && obj !== null) {
+                this[[Prototype]] = obj
+                }
+            }              
+            */
+            name: "Кристина",
+            status: "reception girl",            
+            birthday: "12.12.1990"
+        };
+        console.log(receptionGirl1);
+        receptionGirl1.__proto__ = employee; // меняем значение внутренего свойства [[Prototype]] на объектк employee
+        /*
+        // .__proto__ - это сеттер, а не свойство, то есть:
+        receptionGirl1.__proto__ = function(employee) {
+            if(typeof employee === "object" && employee !== null) {
+            this[[Prototype]] = employee
+            }
+        }
+        */
+        console.log(receptionGirl1);
+        console.log(receptionGirl1.company);
+        console.log(receptionGirl1.getAge());
+        console.log(receptionGirl1.hasOwnProperty("date"));
+        for(key in receptionGirl1) {
+            // console.log(key)
+            if(receptionGirl1.hasOwnProperty(key)){
+                console.log(key)
+            }
+        }
+        // console.log(receptionGirl1.getAge());
+        
+        const teacher1 = {
+            name: "Богдан",
+            status: "teacher",
+            birthday: "03.01.1986"
+        };        
+        
+        console.log(teacher1.company);
+        console.log(teacher1.getAge());
+        
+        const mentor1 = {
+            name: "Алексей",
+            status: "mentor",
+            birthday: "06.07.2002"
+        };
+        
+        console.log(mentor1.company);
+        console.log(mentor1.getAge());
+
+    </script>
+</body>
+
+</html>

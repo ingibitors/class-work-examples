@@ -1,0 +1,5 @@
+function checkMask() {
+
+}
+
+export {checkMask}

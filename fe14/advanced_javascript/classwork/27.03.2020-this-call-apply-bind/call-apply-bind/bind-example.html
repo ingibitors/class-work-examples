@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="click-me">Show user full name</button>
+<script>
+
+    const btn = {
+        name: "Андрей",
+        lastName: "Горынич",
+        getFullName: function ({target}){
+            // console.log(e);
+            // console.log(this);
+            target.textContent = `${this.name} ${this.lastName}`;
+            // return `${this.name} ${this.lastName}`;
+        }
+    }
+    // setTimeout(btn.getFullName, 1000);
+    // setTimeout(btn.getFullName.bind(btn), 2000);
+     const button = document.getElementById("click-me");
+     button.addEventListener("click", btn.getFullName.bind(btn));
+</script>
+</body>
+</html>

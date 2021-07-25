@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script src="axios.min.js"></script>
+    <script>
+       /*
+        // через fetch
+        const productId = 1;
+        const request1 = fetch(`http://danit.com.ua/products/${productId}`);
+        request1.then(response => response.json()).
+            then(result => {
+                const {category} = result;
+                const request2 = fetch(`http://danit.com.ua/categories/${category}`);
+                request2.then(response => response.json()).
+                    then(categoryName => console.log(categoryName));
+        });
+      */
+        
+        const productId = 1;
+        const category = getProductCategory(productId);
+        // category.result === "Notebooks"
+        category.then(result => console.log(result));
+        
+        async function getProductCategory(id) {
+            const {data: category} = await axios.get(`http://danit.com.ua/products/${id}`);
+            // const category = response.data
+            const {data: categoryName} = await axios.get(`http://danit.com.ua/categories/${product.category}`);
+            return categoryName;
+        }
+       
+    </script>
+</body>
+</html>

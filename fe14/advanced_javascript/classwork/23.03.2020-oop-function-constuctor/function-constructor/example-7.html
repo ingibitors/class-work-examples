@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+
+        function Button(container, text, fontSize, color, bgColor, border, borderRadius, padding) {
+            this.container = container;
+            this._btn = document.createElement("a");
+            this._btn.href = "#";
+            this._btn.textContent = text;
+            const {style} = this._btn;
+            style.textDecoration = "none";
+            style.display = "inline-block";
+            style.fontSize = fontSize;
+            style.color = color;
+            style.bgColor = bgColor;
+            style.border = border;
+            style.borderRadius = borderRadius;
+            style.padding = padding;
+
+            this._btn.addEventListener("click", ()=> {
+                const {style} = this._btn;
+                [style.color, style.bgColor] = [style.bgColor, style.color];
+            });
+
+            this.render = function () {
+                container.append(this._btn);
+            }
+        }
+
+        const btnList = document.getElementById("root");
+
+        const buttonRed = new Button(btnList, "Таймер не остановить!", "14px", "red", "white", "1px solid red", "5px", "10px 15px")
+        console.log(buttonRed);
+        buttonRed.render();
+
+
+
+
+    </script>
+</body>
+</html>

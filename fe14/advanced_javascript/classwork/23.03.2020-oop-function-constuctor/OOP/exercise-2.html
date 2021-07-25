@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p id="time"></p>
+    <button id="start-time">Start</button>
+    <button id="stop-time">Stop</button>
+    <button id="reset-time">Reset</button>
+   
+   <!--
+   Создайте объект `stopwatch` (секундомер) согласно описанию:
+    1. Свойства объекта: 
+    - `_time`: время;
+    - `container`: ссылка на DOM-элемент, внутри которого нужно выводить время.
+    1. Методы объекта: 
+    - `start`, `stop`, `reset`, работающие с его свойствами.
+    - `setTime` и `getTime`. `setTime` будет получать новое значение времени в качестве аргумента, и проверять, является ли оно положительным целым числом. Если true - то свойству `_time` будет присвоено значение аргумента, переданного в метод `setTime` и метод вернет ответ объект вида:
+    ```
+    {
+    status: "success"
+    }
+    ```
+
+    Если же аргумент не удовлетворяет критериям, то возвращать объект вида:
+    ```
+    {
+    status: "error",
+    message: "argument must be positive integer"
+    }
+    ```
+    Метод же `getTime` будет просто возвращать значение свойства `_time` для использования его вне методов объектов.
+    -->   
+   
+<script>
+
+    const  stopwatch = {
+         _time: 0,
+         container: null,
+         timerId: null,
+         start(){ 
+            this.timerId = setInterval(()=>{
+                 console.log(this)
+                 this.container.innerHTML = this._time++;
+             }, 1000);
+         }, 
+         stop(){
+             clearInterval(this.timerId);
+         },
+         reset(){
+             this.stop();
+            this.container.innerHTML = 0;
+            this._time = 0;
+            
+         }
+     }  
+    
+    const timeContainer = document.getElementById("time");
+    stopwatch.container = timeContainer;
+
+    const startTime = document.getElementById('start-time');
+    const stopTime = document.getElementById('stop-time');
+    const resetTime = document.getElementById('reset-time');
+
+    startTime.addEventListener('click', stopwatch.start.bind(stopwatch));
+    stopTime.addEventListener('click', stopwatch.stop.bind(stopwatch));
+    resetTime.addEventListener('click', stopwatch.reset.bind(stopwatch));
+
+    
+    
+</script>
+</body>
+</html>

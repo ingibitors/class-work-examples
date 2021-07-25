@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>    
+    <!--  Напишите код, который создает переменные с именем человека,
+а также - его статус среди других пиратов.
+Должно получиться в итоге:
+console.log(name); // Шанкс
+console.log(status); // Ёнко   -->
+    <script>
+        const person = "Рыжеволосый Шанкс; капитан Пиратов Шанкса; Ёнко";
+        const [name, , status] = person.split("; ");
+       console.log(name); // Шанкс
+       console.log(status); // Ёнко    
+
+    </script>
+</body>
+
+</html>

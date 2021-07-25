@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .workers-list {
+            display: flex;
+        }
+        .worker {
+            width: 300px;
+            border: 1px solid;
+            padding: 15px;
+            margin-right: 20px;
+        }
+        .workers-pagination {
+            list-style: none;
+            display: flex;
+        }
+
+        .pagination-page {
+            padding: 5px;
+            border: 1px solid;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .pagination-page.current {
+            background-color: dimgrey;
+            cursor: default;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="workers-list" id="workers-list">
+
+    </div>
+    <ul id="workers-pagination" class="workers-pagination">
+        <li class="pagination-page current">1</li>
+        <li class="pagination-page">2</li>
+        <li class="pagination-page">3</li>
+    </ul>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    /*
+    Напишите простейщую пагинацию: при загрузке на стрницу выводятся первые 3 сотрудника. При клике на "2 страница" - они исчезают и выводятся следующие 3.
+    Для этого нужно отправить GET-запрос по адресу: "http://danit.com.ua/workers" и в параметрах указать номер страницы: page=1 и т.д.
+    Если его не указать - будут выведены все сотрудники
+    */
+   /*
+   1. При загрузке страницы отправить AJAX-запрос по адресу "http://danit.com.ua/workers" указав в параметрах page=1
+   2. Получить ссылку на div, внутри которого нужно выводить сотрудников.
+   3. При получении положительного ответа от AJAX-Запроса обойти ответ в цикле.
+   4. На каждой иттерации цикла создавать DOM-элемент div с такой разметкой внутри:
+         <div class="worker">
+            <h3 class="worker-name"></h3>
+            <p class="worker-job"></p>
+            <a href="" class="worker-phone"></a>
+            <p class="worker-email"></p>
+        </div>
+        Подставляя в пустые поля нужные значения объекта.
+    5. Вставить новосозданный объект в div, найденный в пункте 2.
+    6. Найти все li, отвечающие за пагинацию.
+    7. Повесить на них событие click.
+    8. В обработчике события:
+        8.1. Считать textContent (какую страницу загрузить);
+        8.2. отправить AJAX-запрос по адресу "http://danit.com.ua/workers" указав в параметрах page=номеруТребуемойСтраницы
+        8.3. Повторить пункты 4-6 для положительного ответа.
+   */
+
+   const workersUrl = "http://danit.com.ua/workers";
+    showWorkers(workersUrl, "page=1");
+
+   const workersPagination = document.getElementById('workers-pagination');
+
+   workersPagination.addEventListener("click", function({target}){
+        if(target.classList.contains("pagination-page") && !target.classList.contains("current")) {
+            this.querySelector(".current").classList.remove('current');
+            target.classList.add('current');
+            const pageNumber = target.textContent;
+            showWorkers(workersUrl, `page=${pageNumber}`);
+        }
+   });
+
+   /* FUNTIONS */
+   function showWorkers(url, params) {
+        $.getJSON(`${url}?${params}`, function(data){
+            const workerList = document.getElementById('workers-list');
+            const workers = data.map(worker => getWorkerHTML(worker));
+            workerList.innerHTML = workers.join('');
+        });
+    }
+
+    function getWorkerHTML({name, job, phone, email}) {
+        return ` <div class="worker">
+                <h3 class="worker-name">${name}</h3>
+                <p class="worker-job">${job}</p>
+                <a href="" class="worker-phone">${phone}</a>
+                <p class="worker-email">${email}</p>
+                </div>`;
+    }
+
+    </script>
+
+</body>
+
+</html>

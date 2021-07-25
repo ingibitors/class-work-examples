@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="card user-profile" id="user-profile">
+                <img class="card-img-top" id="user-image" src="">
+                <div class="card-body">
+                    <h4 class="card-title" id="user-name"></h4>
+                    <p class="card-text" id="user-short-info"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Создаём новый XMLHttpRequest-объект, который будет отправлять AJAX-запрос и получать ответ
+        const request = new XMLHttpRequest();
+        //   console.log(request);
+
+        // 2. Настраиваем его: передаем ему первым аргументом тип запроса (GET), а вторым аргументом - адрес запроса (куда будет отправлен запрос)
+        request.open('GET', "http://danit.com.ua/user-profile");
+
+        // 3. Отсылаем запрос
+        request.send();
+
+        // 4. Обрабатываем ответ если он получен. Метод request.onload сработает после того, как мы получим ответ сервера
+        request.onload = function() {
+            if (request.status >= 300) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+                console.log(`Ошибка ${request.status}: ${request.statusText}`); // Например, 404: Not Found
+            } else { // если всё прошло гладко, выводим результат
+
+                // после того, как от сервера пришел ответ, в свойство request.response сохранится ответ сервера: строка, объект  формате JSON и т.п.
+                // console.log(request.response); // как видите - это просто строка
+
+                const resultArr = request.response.split(". "); // превращаем строку в массив строк, потому что все данные разделены точкой и пробелом
+                // console.log(resultArr)
+                
+                /* используя деструктуризацию массива, сохраняет в переменную userName первый элемент массива,
+                в переменную userAddress - второй элемент и переменную userImage - третий
+                */
+                const [userName, userShortInfo, userImage] = resultArr; 
+
+                document.getElementById("user-name").textContent = userName;
+
+                document.getElementById("user-image").src = userImage;
+                
+                document.getElementById("user-short-info").textContent = userShortInfo;
+            }
+        };
+
+        //5. Обрабатываем ситуацию, когда ответа с сервера мы не получили
+        request.onerror = function() {
+            alert("Запрос не удался");
+        };
+
+    </script>
+</body>
+
+</html>

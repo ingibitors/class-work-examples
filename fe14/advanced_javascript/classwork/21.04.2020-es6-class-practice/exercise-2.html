@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <!-- Задание: напишите класс Modal, который будет создавать объект, описывающий каркас всплывающего окна.
+    Свойства объекта:
+    - id всплывающего окна;
+    - классы всплывающего окна;
+    
+    У объекта должно быть 3 метода: 
+    render, который возвращает DOM-элемент всплывающего окна с такой разметкой:
+    
+    <div id="idОкна" class="классыОкна">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+        </div>
+    </div>   
+    
+     openModal, который открывает окно (его нужно использовать как обработчик click для button с id="myBtn");
+     closeModal - который закрывает окно при клике на крестик (span с классом close) внутри окна
+    - -->
+
+    <div id="root"></div>
+    <button id="myBtn">Open Modal</button>
+
+    <script>
+    class Modal {
+        constructor({id, classList}) {
+            this.id = id;
+            this.classList = [...classList];
+            this.elem = null;
+        }
+
+        render() {
+            this.elem = document.createElement("div");
+            const {elem} = this; 
+            elem.id = this.id;
+            elem.classList = this.classList.join(" ");
+            elem.innerHTML = `<div class="modal-content">
+                            <span class="close">&times;</span>
+                            </div>`;
+            
+            elem.addEventListener("click", this.closeModal.bind(this));
+            return elem;
+        }
+        openModal(){
+            this.elem.classList.add("active");
+        }
+        closeModal({target}){
+            if(target.classList.contains("close")) {
+                this.elem.classList.remove("active");
+            }
+        }
+    }
+
+    const newModalProps = {
+        id: "modal",
+        classList: ["modal", "big-modal"]
+    }
+
+    const newModal = new Modal(newModalProps);
+    document.body.append(newModal.render());
+    const myBtn = document.getElementById("myBtn");
+    myBtn.addEventListener("click", newModal.openModal.bind(newModal));
+     
+    </script>
+
+</body>
+
+</html>

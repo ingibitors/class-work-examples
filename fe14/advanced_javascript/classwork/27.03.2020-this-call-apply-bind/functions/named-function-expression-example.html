@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 5 * (5 - 1) * (5 - 2) * (5 - 3) * (5 - 4)
+
+    function getFactorial (number) {
+        if(number === 1) {
+            return number;
+        }
+        else {
+            return number * getFactorial(number - 1);
+        }
+    }
+
+    console.log(getFactorial(5));
+
+    let getNewFactorial = getFactorial;
+    getFactorial = null; // Внезапно обнуляем переменную или удаляем ее
+    console.log(getNewFactorial(5));
+    /*
+    Будет ошибка, потому что при вызове функции getNewFactorial внутри нее будет вызываться функция getFactorial
+
+    /*
+
+    const getFactorial = function thisFunctionName(number) { // даем функции внутренее имя, которое у нее останется навсегда, и которое по сути является ссылкой на функцию изнутри нее. Такие функции называются named function expression 
+        if(number === 1) {
+            return number;
+        }
+        else {
+            return number * thisFunctionName(number - 1);
+        }
+    }
+
+    const getNewFactorial = getFactorial;
+    getFactorial = null;
+    console.log(getNewFactorial(5)); // все ок, потому что при вызове функции getNewFactorial внутрии нее используется ее внутренее имя thisFunctionName
+    */
+</script>
+</body>
+</html>

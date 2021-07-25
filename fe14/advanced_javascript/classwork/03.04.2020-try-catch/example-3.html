@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       
+        function getAge(birthday) {
+            // const birthdayArr = birthday.split(".");
+            //     if(birthdayArr.length !== 3) {
+            //         return false;
+            //     }
+            try {
+                const birthdayArr = birthday.split(".");
+                if(birthdayArr.length !== 3) {
+                    throw new SyntaxError("Неправильный формат, должен быть: дд.мм.гггг");
+                }
+            } catch(e) {
+                throw e;
+                // return e;
+            }
+            return birthdayArr;
+        }
+        /*
+        создание объекта = {}
+        спрашиваешь день рождение
+            вызываешь функцию которая превращает день рождение в воз:раст 
+            гггг, мм, дд
+                функция считающая возвраст внутри себя вызывает функцию ковертации строки в правильный формат
+                если фунция вернула ошибку, то ты создаешь свою ошибку и пробрасываешь ее вверх
+                свои же собственные ошибки функция вычисления возвраста пробрасывает вверх
+        */
+        try {
+            const birthday = prompt("Введите ваш день рождения");
+            if(!birthday) {
+                throw new Error("Поле не заполнено!");
+            }
+            const age = getAge(birthday);
+            // if(!age) {
+            //     throw new SyntaxError("Неправильный формат, должен быть: дд.мм.гггг");
+            // }
+            // throw e;
+        } catch (error) {
+            if(error.message === "Поле не заполнено!") {
+                const birthday = prompt("Введите данные!");
+            }
+            else {
+                const birthday = prompt("Введите данные в правильном формате!");
+            }
+            console.log(`Произошла ошибка ${error.name}. Подробнеее - ${error.message}`);
+        }
+
+
+    </script>
+</body>
+
+</html>

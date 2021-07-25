@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="axios.min.js"></script>
+    <script>
+
+        const req = axios.create({
+            baseURL: "http://danit.com.ua"
+        });
+
+        req.get("/westeros-great-houses-json")
+            .then(response => console.log("response", response.data));
+
+        req.get("/free-towns-list-json")
+            .then(response => console.log("response", response.data));
+
+    </script>
+</body>
+
+</html>

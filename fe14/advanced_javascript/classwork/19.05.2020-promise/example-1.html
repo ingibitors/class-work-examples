@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        console.log(getInfo("Геральт"));
+        console.log(getInfo("Трисс"));
+        
+        function getInfo(name) {
+            setTimeout(() => {
+                const users = [{
+                    age: 51,
+                    name: "Геральт",
+                    home: "Ривия"
+                }, {
+                    age: 40,
+                    name: "Лютик",
+                    home: "Редания"
+                }];
+                const result = users.find(user => user.name === name);
+                console.log(result);
+                if(result) {
+                    return result;
+                }
+                else {
+                    return false;
+                }
+            }, 1000);
+        }
+        */
+
+        
+        const user1 = getInfo("Геральт");
+        user1.then(result => console.log(result)).
+            catch(error => console.log(error));
+        // console.log("After Promise")
+        const user2 = getInfo("Трисс");
+        user2.then(result => console.log(result)).
+            catch(error => console.log(error));        
+        
+        function getInfo(name) {
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const users = [{
+                        age: 51,
+                        name: "Геральт",
+                        home: "Ривия"
+                    }, {
+                        age: 40,
+                        name: "Лютик",
+                        home: "Редания"
+                    }];
+                    const user = users.find(user => user.name === name);
+                    if (user) {
+                        resolve(user);
+                    } else {
+                        reject("Пользователь не найден");
+                    }
+                }, 1000);
+
+            });
+            return promise;
+        }
+        
+
+    </script>
+</body>
+
+</html>

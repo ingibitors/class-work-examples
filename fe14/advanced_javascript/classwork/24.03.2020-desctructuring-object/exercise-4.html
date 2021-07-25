@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Напишите функцию, которая принимает в
+        себя 2 объекта - резюме и вакансию,
+         и возвращает процент совпадения требуемых навыков (скиллов).
+        Навык совпадает если имя скилла совпадает с имененм
+        в вакансии и и требуемый опыт <= опыту человека в этом навыке
+        */
+
+        const resume = {
+            name: "Илья",
+            lastName: "Куликов",
+            age: 29,
+            city: "Киев",
+            skills: [
+                {
+                    name: "Vanilla JS",
+                    practice: 5
+                },
+                {
+                    name: "ES6",
+                    practice: 3
+                },
+                {
+                    name: "React + Redux",
+                    practice: 1
+                },
+                {
+                    name: "HTML4",
+                    practice: 6
+                },
+                {
+                    name: "CSS2",
+                    practice: 6
+                }
+            ]
+        };
+
+
+        const vacancy = {
+            company: "SoftServe",
+            location: "Киев",
+            skills: [
+                {
+                    name: "Vanilla JS",
+                    experience: 3
+                },
+                {
+                    name: "ES6",
+                    experience: 2
+                },
+                {
+                    name: "React + Redux",
+                    experience: 2
+                },
+                {
+                    name: "HTML4",
+                    experience: 2
+                },
+                {
+                    name: "CSS2",
+                    experience: 2
+                },
+                {
+                    name: "HTML5",
+                    experience: 2
+                },
+                {
+                    name: "CSS3",
+                    experience: 2
+                },
+                {
+                    name: "AJAX",
+                    experience: 2
+                },
+                {
+                    name: "Webpack",
+                    experience: 2
+                }
+            ]
+        };
+
+        const isMatchCandidate = function ({skills: vacancySkills}, {skills: resumeSkills}) {
+            console.log(vacancySkills);
+            console.log(resumeSkills);
+        };
+
+        const result = isMatchCandidate(vacancy, resume);
+        console.log(result);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<!--  напишите функцию getPatientStatus, которая принимает в качестве аргумент рост в см и вес в кг пациента, и возвращает 2 параметра - индекс массы тела и степень ожирения. Сохраните значения, которые функция вернет, в отдельные переменные weightInfex и weightDiagnos.
+  Степени ожирения при разном значении индекса массы тела:
+- от 10 до 15 - анорексия;
+- от 16 до 25 - норма;
+- от 26 до 30 - лишний вес;
+- от 31 до 35 - I степень;
+- от 36 до 40 - II степень;
+- от 41 и выше - III степень;
+
+ Используйте лучшие правила создания модульного кода -->
+<script>
+    const getPatientStatus = function (height, weight) {
+      const bodyMassIndex = Math.floor(getBodyMassIndex(height, weight));
+      const index = Math.floor((bodyMassIndex - 10)/5);
+      const diagonsisArr = ["анорексия", "норма", "норма", "лишний вес", "I степень", "II степень"]
+      const diagnos = diagonsisArr[index];
+      return [bodyMassIndex, diagnos];
+      /*
+      if(bodyMassIndex >= 10 && bodyMassIndex <= 15) {
+        diagnose = "анорексия";
+      }
+      else if(bodyMassIndex <= 25) {
+        diagnose = "норма";
+      }
+      else if(bodyMassIndex <= 30) {
+        diagnose = "лишний вес";
+      }
+      else if(bodyMassIndex <= 35) {
+        diagnose = "I степень";
+      }
+      else if(bodyMassIndex <= 40) {
+        diagnose = "II степень";
+      }
+      else if(bodyMassIndex > 40) {
+        diagnose = "III степень";
+      }
+      return [bodyMassIndex, diagnose];
+      */
+    };
+
+    const getBodyMassIndex = (height, weight) => weight / ((height/100)**2);
+
+const [patienBodyIndex, patientDiagnos] = getPatientStatus(189, 80);
+/*
+const result = getPatientStatus(189, 90);;
+const patienBodyIndex = result[0];
+const patientDiagnos = result[1];
+*/
+console.log(patienBodyIndex);
+console.log(patientDiagnos);
+</script>
+</body>
+</html>

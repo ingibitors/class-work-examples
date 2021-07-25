@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="wrapper fadeInDown pt-4">
+    <div id="formContent">
+
+        <!-- Login Form -->
+        <form id="register-form" action="http://danit.com.ua/register">
+            <input type="text" class="fadeIn second" name="login" placeholder="login" required>
+            <input type="password" class="fadeIn third" name="password" placeholder="password" required>
+            <input type="password" class="fadeIn third" name="password-repeat" placeholder="Repeat password" required>
+            <input type="submit" class="fadeIn fourth" value="Register">
+        </form>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!--  Напишите AJAX-запрос методом POST на адрес "http://danit.com.ua/register" для
+  Регистрации пользователя. 
+    
+  Подробно:
+  Если поля "Password" и "Repeat password" совпадают - отправьте AJAX-запрос методом POST
+  и в случае положительного ответа выведите сообщение "Поздравляю, вы зарегистрированы"
+  под кнопкой "Register" формы.
+  Положительный ответ: это ответ вида:
+  {
+    "status": "Success",
+    "message": "Your are register",
+}
+  Если не совпадают - выведите под кнопкой "Register" 
+  сообщение "Пароли должны совпадать!"
+ 
+
+  Используйте XMLHttpRequest.
+  -->
+
+<script>
+
+const registerForm = document.getElementById('register-form');
+registerForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const login = this.querySelector('[name="login"]').value;
+    const password = this.querySelector('[name="password"]').value;
+    const passwordRepeat = this.querySelector('[name="password-repeat"]').value;
+    if (password !== passwordRepeat) {
+        this.insertAdjacentHTML("beforeend",'<p class = "error-message">поле паролей не совпадают</p>')
+    }
+    else {
+        const errorMessage = this.querySelector('.error-message')
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+        const request = new XMLHttpRequest();
+        request.open('POST', 'http://danit.com.ua/register');
+        const body = {
+            password, login
+        };
+        request.send(JSON.stringify(body));
+        request.onload = () => {
+            if (request.status > 300) {
+                console.log(request.statusText);
+            }
+            else {
+                this.insertAdjacentHTML("beforeend",'<p class = "aliluia-message">Поздравляю, вы зарегистрированы</p>')
+            }
+        };
+    
+    }
+});
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+
+</html>

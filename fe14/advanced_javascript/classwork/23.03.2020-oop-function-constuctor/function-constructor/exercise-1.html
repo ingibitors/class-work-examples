@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <!--
+   Создайте функцию-конструтор объекта `stopwatch` согласно описанию:
+    1. Свойства объекта: 
+    - `_time`: время;
+    - `container`: ссылка на DOM-элемент, внутри которого нужно выводить время.
+    1. Методы объекта: 
+    - `start`, `stop`, `reset`, работающие с его свойствами.
+    - `setTime` и `getTime`. `setTime` будет получать новое значение времени в качестве аргумента, и проверять, является ли оно положительным целым числом. Если да - то свойству `_time` будет присвоено значение аргумента, переданного в метод `setTime` и метод вернет ответ объект вида: 
+    ```
+    {
+    status: "success",
+    }
+    ```
+
+    Если же аргумент не удовлетворяет критериям, то возвращать объект вида:
+    ```
+    {
+    status: "error",
+    message: "argument must be positive integer"
+    }
+    ```
+    Метод же `getTime` будет просто возвращать значение свойства `_time` для использования его вне методов объектов.
+    -->
+    <p id="time"></p>
+    <button id="start-time">Start</button>
+    <button id="stop-time">Stop</button>
+    <button id="reset-time">Reset</button>
+   <script>
+
+       function Stopwatch(container) {
+
+
+       }
+
+       const startBtn = document.getElementById('start-time');
+       const stopBtn = document.getElementById('stop-time');
+       const resetBtn = document.getElementById('reset-time');
+
+       const stopWatchContainer = document.getElementById('time');
+       const stopwatch = new Stopwatch(stopWatchContainer);
+
+
+   </script>
+
+
+</body>
+</html>

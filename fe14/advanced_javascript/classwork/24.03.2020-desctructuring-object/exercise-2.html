@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+    Напишите функцию isDriverLicenseLeagal, которая принимает
+    в себя информацию об пользователе
+    в виде объекта,
+    среди параметров которого - поля age и wantLicense,
+    и которая возвращает ответ -
+    может ли человек получить
+    в его возрасте желаемые права.
+    Прототип функции уже содержит в себе массив объектов,
+    описывающий разные типы водительских прав.
+    */
+
+        const isDriverLicenseLeagal = function({age: driverAge, wantLicense}) {
+            const driverLicence = [{
+                    age: 16,
+                    type: "A1",
+                    time: 2
+                }, {
+                    age: 16,
+                    type: "A2",
+                    time: 2
+                },
+                {
+                    age: 18,
+                    type: "B1",
+                    time: 6
+                },
+                {
+                    age: 18,
+                    type: "B",
+                    time: 4
+                },
+                {
+                    age: 19,
+                    type: "BE",
+                    time: 4
+                },
+                {
+                    age: 21,
+                    type: "D1",
+                    time: 3
+                }
+            ];
+            const {age} = driverLicence.find(({type}) => type === wantLicense);
+            /*
+            const licence = driverLicence.find((obj) => obj.type === wantLicense);
+            const age = licence.age;
+            */
+            return (age >= driverAge);
+        };
+        
+        const user = {
+            age: 21,
+            name: "Алексей",
+            lastName: "Михайлович",
+            wantLicense: "B1"
+        };        
+
+        const result = isDriverLicenseLeagal(user);
+        console.log(result);
+
+    </script>
+</body>
+
+</html>

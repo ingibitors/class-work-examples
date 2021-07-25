@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<ul id="free-towns"></ul>
+<script>
+    /*
+    Неапишите GET запрос по адресу
+    "http://danit.com.ua/free-towns-list-json,
+    который получает список городов в формате
+    JSON и выводит его на экран внутри ul с id="free-towns"
+    Используйте Promise. 
+    */ 
+   const answer = new Promise(function(resolve,reject){
+       const request = new XMLHttpRequest()
+       request.open("GET","http://danit.com.ua/free-towns-list-json")
+       request.send()
+       request.onload = function(){
+           if(request.status < 300) {
+               resolve(request.response)
+           } else {
+               reject("Ошибка")
+           }
+       }
+   });
+   answer.then(response => {
+       const result = JSON.parse(response)
+       const newArr = result.map(item => `<li>${item}</li>`)
+       const ul = document.getElementById("free-towns")
+       ul.insertAdjacentHTML("beforeend", newArr.join(""))
+   }).catch(error => console.log(error))
+
+   
+
+</script>
+</body>
+</html>

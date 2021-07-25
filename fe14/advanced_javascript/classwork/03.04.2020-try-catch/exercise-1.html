@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Спросите у пользователя список любимых актеров через запятую. 
+        Выведите его на страница внутри div с id="root" в виде списка.
+         Все возможные проблемы оберните в try ... catch чтобы скрипт не упал -->
+
+    <div id="root"></div>
+
+    <script>
+        try {
+            const userActors = prompt("Введите ваших любимых актеров через запятую.")
+            const arr = userActors.split(",");            
+            const actorsList = arr.map(item => `<li>${item}</li>`);
+            const ul = document.createElement("ul");
+            ul.insertAdjacentHTML("afterstart", actorsList.join(""));
+            const actorsContainer = document.getElementById("root");
+            actorsContainer.append(ul);            
+        } catch(error) {
+            const actorsContainer = document.getElementById("root");
+            if(error.name === "TypeError") {                
+                actorsContainer.textContent = "Введите какие-то данные";
+            } else if(error.name === "ReferenceError") {
+                actorsContainer.textContent = "Произошла ошибка. Зайдите пожалуйста позже";
+            }
+        }
+        
+
+
+
+    </script>
+</body>
+</html>

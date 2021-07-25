@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap:20px;
+        }
+        
+        .cards__item {
+            position: relative;
+            padding: 15px 15px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        
+        .cards__close {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="cards" id="cards">
+        <!-- <div class="cards__item">
+            <span class="cards__close">X</span>
+            <p>Елена Гилберт</p>
+            <p>women 17</p>
+            <p>human</p>
+        </div> -->
+    </div>
+    <script>
+
+        /*
+        Напишите код, который:
+        1. Выводит на экран объекты в виде карточек, по 4 в ряд. Разметка карточек уже есть.
+        2. В правом верхнем углу карточк выводит крестик, при нажатии на который 
+        карточка удаляется со страницы и объект удаляется из массива.
+        */
+        const characters = [
+        {
+            name: "Елена",
+            lastName: "Гилберт",
+            age: 17, 
+            sex: "women",
+            status: "human"
+        },
+        {
+            name: "Кэролайн",
+            lastName: "Форбс",
+            age: 17,
+            sex: "women",
+            status: "human"
+        },
+        {
+            name: "Аларик",
+            lastName: "Зальцман",
+            age: 31,
+            sex: "man",
+            status: "human"
+        },
+        {
+            name: "Дэймон",
+            lastName: "Сальваторе",
+            age: 156,
+            sex: "man",
+            status: "vampire"
+        },
+        {
+            name: "Ребекка",
+            lastName: "Майклсон",
+            age: 1089,
+            sex: "women",
+            status: "vampire"
+        },
+        {
+            name: "Клаус",
+            lastName: "Майклсон",
+            age: 1093,
+            sex: "man",
+            status: "vampire"
+        }];
+
+    </script>
+</body>
+</html>

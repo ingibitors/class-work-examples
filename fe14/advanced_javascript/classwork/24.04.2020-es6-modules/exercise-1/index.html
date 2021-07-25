@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- 
+        Задание: 
+        1. Напишите класс "Input", который создает объект, описывающий однострочное 
+        поле ввода.
+        У объекта будут такие свойства:
+        - тип поля ввода;
+        - классы;
+        - id;
+
+        и метод:
+        - render, возвращающий DOM-элемент, созданный на основе свойств объекта.
+        
+        Вынесите этот класс в отдельный модуль, импортируйте ее в основной файл main.js,
+        создайте однострочное поле ввода и выведите его на экран.
+     -->
+<!-- <input type="text" class="form-control size-lg" id="user-name"> -->
+    <script type="module">
+        import {Input} from './input.js';
+        const inputTextProps = {
+            type: "text",
+            classes: "form-control size-lg",
+            id: "user-name"
+        }
+        const inputText = new Input(inputTextProps);
+        document.body.append(inputText.render());
+    </script>  
+</body>
+</html>

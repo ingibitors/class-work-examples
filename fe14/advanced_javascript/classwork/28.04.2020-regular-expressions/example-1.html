@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const phrase = "Самые толстые котики - у нас на районе, потому что мы их кормим теми, кто выбрасывает мусор мимо урны и котики это видят. Котики - это хорошо";
+        const subPhrase = /Котики/gi;
+// /БольшаяЛатБукваБольшаяЛатБукваЦифра/
+        // "http"
+        // const subPhrase1 = new RegExp("Котики", "gi");
+        // console.log(typeof subPhrase);
+        // console.log(typeof subPhrase1);
+        /*
+        const position = phrase.indexOf("котики");
+        if(position !== -1) {
+
+        }
+
+        const result = phrase.match(subPhrase);
+        if(result) {
+            result.index;
+        }
+        */
+
+        // console.log(phrase.match(subPhrase));
+        // const newPhrase = phrase.replace(/котики/gi, "рыбки");
+        // console.log(phrase);
+        // console.log(newPhrase);
+        
+        const regExpStr = /котики/gi;
+        console.log(regExpStr.test(phrase));
+        // console.log(phrase.includes("Район"));
+
+    </script>
+</body>
+
+</html>

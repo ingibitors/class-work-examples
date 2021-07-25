@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        У вас есть массив машин - создайте их них массив carsUnique, исключив из исходного массива дубли.
+        */
+
+        const cars1 = [{
+            brand: "Mercedes",
+            model: "X20"
+        }, {
+            brand: "Volvo",
+            model: "Z3"
+        }, {
+            brand: "Mercedes",
+            model: "X20"
+        }, {
+            brand: "Sitroen",
+            model: "No model"
+        }];
+        
+    // 1. из массива объектов сделать массив строк;
+    // 2. создать пустой массив 
+    // 3. перебрать массив и проверить его елементы в новом массиве
+    // 4. преобразовать строки массива в объекты
+
+    const obj = {
+        name: "Алекс",
+        lastName: "Владимирский"
+    };
+
+   const carsJSON = cars1.map(JSON.stringify);
+   const carsUniqueJSON = [];
+   carsJson.forEach(elem => {
+       if (!carsUniqueJSON.includes(elem)) {
+        carsUniqueJSON.push(elem);
+       }
+   });
+   const carsUnique = carsUniqueJSON.map(JSON.parse);
+   console.log(carsUnique);
+   
+    </script>
+</body>
+
+</html>

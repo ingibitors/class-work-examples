@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body>
+<!--  Подключаем JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<!--    <script src="jquery-3.4.1.min.js"></script> - или так: скачиваем и подключаем jquery -->
+    <script>
+        // Синтаксис простого GET-запроса
+        $.ajax({
+            url: "http://danit.com.ua/user-profile", // адрес, на который нужно отправлять запрос
+            method: "GET", // тип запроса. Для GET запросов его можно не указывать
+            dataType: "text", // тип данных, которые вы ожидаете получить
+            success: function(data) { // функция, срабатывающая при успешной отправки и получении ответа. В первый аргумент функции сохранится ответ сервера
+                console.log(data);
+            },
+            error: showError // функция, срабатывающая при ошибке - например, при отсутствии интернет-соединения
+        });
+
+        function showError(err){
+            alert(err);
+        }
+
+    </script>
+</body>
+
+</html>

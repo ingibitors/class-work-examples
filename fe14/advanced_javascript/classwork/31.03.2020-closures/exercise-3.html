@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <!--
+   Напишите функцию createProduct, которая будет создавать объекты, описывающие товары. У товара должны быть такие свойства:
+   - name;
+   - fullName;
+   - article;
+   - price.
+   При этом при попытке напрямую (через точку) изменить свойство price происходит его его проверка на прравильность: цена должна быть целым положительным числом. Если эти требования нарушаются - присвоения не произойдет.
+   Создавать его аналог через _price нельзя.
+   
+   Пример работы:
+   const notebook = createProduct("lenovo X120S", "lenovo X120S (432-44) W", 3332, 23244);
+   console.log(notebook.price);// выведет  23244
+   notebook.price = -4; // присвоение не произойдет
+   console.log(notebook.price);// выведет  23244
+   notebook.price = 22000;
+   console.log(notebook.price);// выведет  22000
+   -->
+    <script>
+       function createProduct(name, fullName, article, price) {
+           const obj = {
+               set name(value) {
+                   if(isNaN(value)) {
+                       name = value;
+                       return true;
+                   }
+                   return false;
+               },
+               get name() {
+                   return name;
+               },
+               set fullName(value) {
+                   if(isNaN(value) && value.includes(name)) {
+                       fullName = value;
+                       return true;
+                   }
+                   return false;
+               },
+               get fullName() {
+                   return fullName;
+               },
+               set article(value) {
+                   if(Number.isInteger(value) && value >= 0) {
+                       article = value;
+                       return true;
+                   }
+                   return false;
+               },
+               get article() {
+                   return article;
+               },
+               set price(value) {
+                   if(Number.isInteger(value) && value >= 0) {
+                       price = value;
+                       return true;
+                   }
+                   return false;
+               },
+               get price() {
+                   return price;
+               }
+           }
+           return obj;
+       }
+
+   const notebook = createProduct("lenovo X120S", "lenovo X120S (432-44) W", 3332, 23244);
+   console.log(notebook.price);// выведет  23244
+   notebook.price = -4; // присвоение не произойдет
+   console.log(notebook.price);// выведет  23244
+   notebook.price = 22000;
+   console.log(notebook.price);// выведет  22000
+
+    </script>
+
+</body>
+
+</html>

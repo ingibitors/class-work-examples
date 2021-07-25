@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 3</title>
+</head>
+<body>
+<!--  напишите функцию createUser, которая создает объект "Пользователь".
+В качестве аргументов она принимает в себя такие строки:
+1. Имя пользователя.
+2. Его фамилию.
+3. Перечень дополнительных строк в формате "имяСвойства: значениеСвойства". 
+Их может быть много.
+
+Пример работы:
+const user = createUser("Рудольф", "Сикорски", "work: Руководитель КОМКОН-2", "wife: нет");
+console.log(user);
+/*
+user = {
+    name: "Рудольф",
+    lastName: "Сикорски",
+    work: "Руководитель КОМКОН-2",
+    wife: "нет"
+}
+*/
+
+Используйте оператор rest и дестрктуризацию массива
+-->
+<script>
+    const user = createUser("Рудольф", "Сикорски", "work: Руководитель КОМКОН-2", "wife: нет");
+    console.log(user);
+
+   function createUser(name, lastName, ...properties) {
+       const user = {
+           name,
+           lastName
+       };
+      
+       properties.forEach((str)=> {
+           // "work: Руководитель КОМКОН-2"
+           const [name, value] = str.split(": ");
+           user[name] = value;
+           // user.work = "Руководитель"
+           // user.wife = "нет"
+       });
+       /*
+       x034322 {
+           name: name,
+           lastName: lastName           
+       }
+       const user = ссылка на ячейку x034322
+       const user2 = user;
+       */
+       return user;
+   }
+
+</script>
+
+
+</body>
+</html>

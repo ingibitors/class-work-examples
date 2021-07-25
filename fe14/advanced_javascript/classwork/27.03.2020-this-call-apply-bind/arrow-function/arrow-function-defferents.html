@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Всегда function expression
+        const isAdult = (age) => {
+            return age >= 18;
+        };
+        // 2. Другой синтаксис - вместо слово function перед списком аргументов => после его
+        /*
+        const isAdult = (age) => {
+            return age >= 18;
+        }        
+        */
+       // 3. Если тело функции состоит из одной строки, о можно не писать открывающую и закрывающую скобки и return
+    //    const isAdult = (age) => age >= 18;  
+       // 4. Если аргумент  один, его можно не заключать в круглые скобки
+    //    const isAdult = age => age >= 18;  
+    // 5. Нет своего this и он при создании заимствует this у создавщей его функции  и больше не меняется
+    // 6. Нельзя вызвать через new
+    // const result = new isAdult;
+    // 7. Нет псевдомассива arguments
+
+    </script>
+</body>
+</html>

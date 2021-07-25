@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    Спросите у пользователя номер паспорта. 
+    После чего проверьте, правильно ли он его ввел 
+    Правильный номер паспорта это: две больших буквы в начале и 6 цифр после
+    */
+   const userPassport = prompt("Введите номер паспорта");
+    /*const passport1 = "EH432741";
+    const passport2 = "E144331111";
+    const passport3 = "1EH542222";
+    const passport4 = "EH5555553";*/
+    const expression = /^[A-Z]{2}[0-9]{6}$/;
+    // const expression = /^[а-яё]{2,4}[0-9]{6,}/;
+/*
+    console.log(expression.test(passport1));
+    console.log(expression.test(passport2));
+    console.log(expression.test(passport3));
+    console.log(expression.test(passport4));
+    */
+    const result=expression.test(userPassport);
+   if(result){
+       alert('Your passport is correct')
+   }else{
+    alert('Her vam')
+   }
+
+    </script>
+</body>
+</html>

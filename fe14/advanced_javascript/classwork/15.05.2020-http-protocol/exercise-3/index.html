@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container text-center">
+
+        <form action="" id="filter-westeros-greate-houses">
+            <input type="checkbox" name="Lannister" value="Lannister">
+            <label for="Lannister">Lannister</label><br>
+            <input type="checkbox" name="Targaryen" value="Targaryen">
+            <label for="Targaryen">Targaryen</label><br>
+            <input type="checkbox" name="Stark" value="Stark">
+            <label for="Stark">Stark</label><br>
+            <input type="checkbox" name="Baratheon" value="Baratheon">
+            <label for="Baratheon">Baratheon</label><br>
+            <input type="checkbox" name="Tully" value="Tully">
+            <label for="Tully">Tully</label><br>
+            <input type="checkbox" name="Arryn" value="Arryn">
+            <label for="Arryn">Arryn</label><br>
+            <input type="checkbox" name="Tyrell" value="Tyrell">
+            <label for="Tyrell">Tyrell</label><br>
+            <input type="checkbox" name="Martell" value="Martell">
+            <label for="Martell">Martell</label><br>  
+            <input type="checkbox" name="Greyjoy" value="Greyjoy">
+            <label for="Greyjoy">Greyjoy</label><br>                                                               
+            <input type="submit" value="Узнать">
+        </form>
+    </div>
+
+    <script>
+        /*
+    Напишите код, который работает так: 
+    1. Пользователь отмечает галочками те Великие дома Вестероса, 
+    подробную информацию о которых он хочет увидеть.
+    2. Нажимает на кнопку "Узнать".
+    3. Отправляется AJAX-запрос типа POST по 
+    адресу http://danit.com.ua/westeros-great-houses для получения нужной информации.
+    Запрос должен быть в формате JSON вида:
+    {
+	    "houseList": ["Lannister", "Martell"]
+    }
+    И с заголовком: 
+    'Authorization': 'Bearer <token>'
+    Переменную <token> возьмите из localStorage - она должна было сохранится в предыдущей задаче.
+
+    Формат ответа:
+    [
+        {
+            "name": "Lannister",
+            "info": {
+                "words": "Услышь мой рёв!",
+                "head": "Тайвин Ланнистер",
+                "heir": "Джейме Ланнистер",
+                "castle": "Утес Кастерли"
+            }
+        },
+        {
+            "name": "Martell",
+            "info": {
+                "words": "Непреклонные, несгибаемые, несдающиеся.",
+                "head": "Доран Мартелл",
+                "heir": "Тристан Мартелл",
+                "castle": "Солнечное копье"
+            }
+        }
+    ]    
+    4. Ответ должен выводится в виде вложеного списка. 
+    5. Если авторизация не удалась, вы получите ответ вида:
+    {
+        "status": "Error",
+        "message": "You are not authorized"
+    }
+    И должны вывести сообщение о неудавшейся авторизации на экран.
+
+    Для отправки запроса используйте XMLHttpRequest
+    */
+
+    const token = localStorage.getItem('token');
+
+    const formHousesID = document.getElementById('filter-westeros-greate-houses');
+    formHousesID.addEventListener('submit', function(e){
+
+        e.preventDefault();
+        const checedHouses = this.querySelectorAll('input:checked');
+        const houseList = [].map.call(checedHouses, ({value}) => value);
+        
+        const request = new XMLHttpRequest();
+        request.open('POST', 'http://danit.com.ua/westeros-great-houses');
+
+        const body = {houseList};
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.setRequestHeader('Authorization', `Bearer ${token}`);
+        request.responseType = 'json';
+        request.send(JSON.stringify(body));
+
+        request.onload = () => {
+            const ul = document.createElement('ul');
+            ul.className = "text-left";
+            const houseList = request.response.map(({name, info: {words, head, heir, castle}}) => {
+                return `<li>${name}
+                    <ul>
+                        <li>Глава: ${head}</li>
+                        <li>Девиз: ${words}</li>
+                        <li>Наследник: ${heir}</li>
+                        <li>Замок: ${castle}</li>
+                    </ul>
+                </li>`
+            });
+
+            ul.insertAdjacentHTML('beforeend', houseList.join(''));
+            this.after(ul);
+        }
+
+
+
+    })
+
+
+    </script>
+</body>
+
+</html>

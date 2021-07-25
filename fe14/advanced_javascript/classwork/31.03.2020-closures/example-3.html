@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function createUser(name, lastName, birthday) {
+            // createUser.LexicalEnvironment[""Environment Record""]
+            const obj = {
+                isStr(value) {
+
+                },
+                set name(value) {
+                    // obj.[[Envirment]] = 
+                    if(isNaN(value)) {
+                        name = value;
+                        return true;
+                    }
+                    return false;
+                },
+                get name() {
+                    return name;
+                }
+            }
+            return obj;
+        }
+
+        const user = createUser("Седрик", "Дигори", "10.12.1980");
+
+        const propertyName = prompt("Какое свойство вы хотите изменить?");
+        const propertyValue = prompt("Значение изменяемого свойства");
+        user.name = 42;
+        if(user.hasOwnProperty(propertyName)) {
+            user[propertyName] = propertyValue;
+        }
+        
+        
+        // console.log(user.name);
+        // user.name = 42;
+        // console.log(user.name);
+        // user.name = "Годрик";
+        // console.log(user.name);
+    </script>
+    
+</body>
+</html>

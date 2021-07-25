@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const url = "http://danit.com.ua/products";
+        const request = fetch(url);
+        request.then(response => {
+            const result = response.json();
+            return result;
+        })
+        .then(result => {
+            console.log(result);
+        })
+    </script>
+</body>
+</html>

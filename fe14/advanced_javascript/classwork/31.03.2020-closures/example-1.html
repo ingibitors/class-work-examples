@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function getFullName(name, lastName) {
+        console.log(user);
+        return `${name} ${lastName}`;
+    }
+        /*
+        В момент создания функции ей добавляется свойство LexicalEnvironment (лексическое окружение), которое представляет собой
+        объект, в котором есть 2 свойства: Environment Record (ссылка объект, в котором храняться внутренние переменные - аргументы и локальные переменные фунции) и [[Environment]] - ссылка на внешнее лексическое окружение (где искать недостающие переменные)
+        getFullName.LexicalEnvironment = {
+            "Environment Record": null, // здесь будет ссылка на объект, свойствами которого и будут аргументы и локальные переменные функции. ПРИ КАЖДОМ ВЫЗОВЕ ФУНКЦИИ ОН СОЗДАЕТСЯ ЗАНОВО
+            [[Environment]]: window // здесь же храниться ссылка на внешнее лексическое окружение - где искать переменнные, если их нет в свойстве "Environment Record". Эта ссылка записывается в функцию один раз при ее создании и не меняется 
+        }
+        */
+        console.log(window.getFullName);
+        const user = {
+            age: 42
+        }
+
+        getFullName("Александр", "Сергеевич");
+        console.log(name)
+        /*
+        const obj2311 = {
+            name: "Александр",
+            lastNme: "Сергеевич"
+        }
+        getFullName.LexicalEnvironment["Environment Record"] = obj2311;
+
+        if(getFullName.LexicalEnvironment["Environment Record"].hasOwnProperty("user")) {
+            console.log(getFullName.LexicalEnvironment["Environment Record"].user)
+        }
+        else {
+            if([[Environment]].hasOwnProperty("user")) {
+                console.log([[Environment]].user)
+            }
+        }
+        return `${getFullName.LexicalEnvironment["Environment Record"].name} ${getFullName.LexicalEnvironment["Environment Record"].lastName}`;
+
+        if(никто не ссылается на obj2311) {
+            delete obj2311;
+        }
+        getFullName.LexicalEnvironment["Environment Record"] = null;
+
+        */
+    </script>
+</body>
+</html>

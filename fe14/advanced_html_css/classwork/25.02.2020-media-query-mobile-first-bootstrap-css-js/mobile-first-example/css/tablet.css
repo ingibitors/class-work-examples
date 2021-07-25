@@ -1,0 +1,35 @@
+@media (min-width: 567px) {
+    .container {
+        max-width: 540px;
+    }
+    .header-row {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .article-row {
+        flex-direction: row;
+    }
+
+    .article-left-col {
+        width: 40%;
+    }
+
+    .article-main-col {
+        width: 60%;
+    }
+
+    .article-right-col {
+        width: 100%;
+    }
+
+    .sidebar-page-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .sidebar-page-item {
+        flex: 1 1 33%;
+    }
+}

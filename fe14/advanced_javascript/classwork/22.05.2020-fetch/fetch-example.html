@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const request = fetch("http://danit.com.ua/dragons-list-jsn");
+        // console.log(request);
+
+        request.then(response => {
+            if(!response.ok) {
+                throw new Error("Страница не найдена");
+            }
+            return response.json();
+            // return "Свежевыжатый кошачий сок";
+        }).then(result => {
+            console.log(result);
+        }).
+        catch(error => {
+            console.log(error);
+        });
+
+        // request.then(res => res.json()).
+        // then(result => console.log(result)).
+        // catch(error => console.log(error))
+
+
+    </script>
+</body>
+
+</html>

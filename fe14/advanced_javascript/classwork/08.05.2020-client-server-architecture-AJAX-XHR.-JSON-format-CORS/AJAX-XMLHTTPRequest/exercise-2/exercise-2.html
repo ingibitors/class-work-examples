@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+           <h3>Драконы Дейенерис Таргариен</h3>
+            <ol id="dragons-list"></ol>
+            
+            <h3>Вольные города Эссоса</h3>
+            <ul id="free-towns-list"></ul>
+        </div>
+    </div>
+</div>
+
+<script>
+        /*
+        Отправьте AJAX-запрос на адрес "http://danit.com.ua/dragons-list".
+        В качестве ответа вы получите строку вида: "Дрогон. Рейгаль. Визерион"
+        Используя полученный ответ, Выведите внутри ol с id="dragons-list" список всех драконов Дейенерис Таргариен.
+        
+        Отправьте AJAX-запрос на адрес "http://danit.com.ua/free-towns-list".
+        В качестве ответа вы получите строку вида: "Браавос. Волантис. Квохор. Лис. Лорат. Мир. Норвос. Пентос. Тирош."
+        Используя полученный ответ, Выведите внутри ol с id="free-towns-list" список всех Вольных городов Эссоса.
+        
+        Подумайте, как оптимизировать код, чтобы не писать одно и то же дважды.
+        */
+
+    function getRequest(url, func, ...args){
+        const request = new XMLHttpRequest();
+        request.open("GET", url);
+        request.send();
+        request.onload = function () {
+            if (request.status >= 300) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+                    console.log(`Ошибка ${request.status}: ${request.statusText}`); // Например, 404: Not Found
+            } else {
+                const result = request.response.split(". ");
+                func(result, ...args);
+            }
+        }
+    }
+    
+    function createList(arr, list){
+        const listItems = arr.map(item => `<li>${item}</li>`).join("");
+        list.insertAdjacentHTML("beforeend",listItems);
+    }
+
+    const dragonsList = document.getElementById("dragons-list");
+    const citysList = document.getElementById("free-towns-list");
+
+    getRequest("http://danit.com.ua/dragons-list", createList, dragonsList);
+
+    getRequest("http://danit.com.ua/free-towns-list", createList, citysList);
+
+    /*
+    const request = new XMLHttpRequest();
+    request.open("GET","http://danit.com.ua/dragons-list");
+    request.send();
+    request.onload = function () {
+        if (request.status >= 300) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+                console.log(`Ошибка ${request.status}: ${request.statusText}`); // Например, 404: Not Found
+        } else {
+            const resultArr = request.response.split(". ");
+            const dragonsList = document.getElementById("dragons-list")
+            const dragonsItems = resultArr.map(dragon => `<li>${dragon}</li>`).join("");
+            dragonsList.insertAdjacentHTML("beforeend",dragonsItems);
+        }
+    }
+
+    const request1 = new XMLHttpRequest();
+    request1.open("GET","http://danit.com.ua/free-towns-list");
+    request1.send();
+    request1.onload = function () {
+        if (request1.status >= 300) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+                console.log(`Ошибка ${request1.status}: ${request1.statusText}`); // Например, 404: Not Found
+        } else {
+            const resultArr = request1.response.split(". ");
+            const citysList = document.getElementById("free-towns-list");
+            const citysItems = resultArr.map(city => `<li>${city}</li>`).join("");
+            citysList.insertAdjacentHTML("beforeend",citysItems);
+        }
+    };*/
+</script>
+</body>
+</html>

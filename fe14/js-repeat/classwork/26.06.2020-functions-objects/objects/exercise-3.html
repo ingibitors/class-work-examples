@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    Напишите функцию, сравнивающую два объекта по свойствам. 
+    Если у объектов полностью совпадают названия 
+    свойств и их значения - функция возвращает true. Если нет - false.
+    */
+
+        const pirate1 = {
+            title: "Джон Сильвер",
+            age: 41,
+        };
+
+        const pirate2 = {
+            title: "Джон Сильвер",
+            age: 42
+        }; 
+        
+        function isClone (obj1,obj2) {
+            // const str1 = Object.entries(obj1).join("");
+            // const str2 = Object.entries(obj2).join("");
+            const str1 = JSON.stringify(obj1);
+            const str2 = JSON.stringify(obj2);
+            return (str1 === str2);
+            // let result = true;
+            // for(let [key, value] of Object.entries(obj1)) {
+            //     if(!(obj2[key] && value === obj2[key])) {
+            //         result = false;
+            //         break;
+            //     } 
+            // }
+            // return result;
+            
+        }
+        
+        console.log(isClone(pirate1, pirate2))
+    </script>
+</body>
+</html>

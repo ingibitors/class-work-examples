@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="list">
+
+    </ul>
+<!--   У вас есть 2 массива armodroms и airships -
+объедините их содержимое в один массив warMachine максимально элегантным способом: -->
+
+<script>
+    const armodroms = ["Отравленный кинжал", "Золотой бог", "Гарганто", "Фламберг", "Рыцарь"];
+    const airships = ["Золар Ауперкаль", "Казнь", "Вечный голод", "Покровитель"];
+    //["Отравленный кинжал", "Золотой бог", "Гарганто", "Фламберг", "Рыцарь", "Золар Ауперкаль", "Казнь", "Вечный голод", "Покровитель"];
+    const warMachine = [...armodroms, ...airships];
+    const arr = [...warMachine];
+    console.log(warMachine); // выведет - ["Отравленный кинжал", "Золотой бог", "Гарганто", "Фламберг", "Рыцарь", "Золар Ауперкаль", "Казнь", "Вечный голод", "Покровитель"]
+    console.log(arr);
+    const list = document.getElementById("list");
+    const listContent = warMachine.map(item => `<li>${item}</li>`).join("")
+    list.insertAdjacentHTML("afterbegin", listContent);
+    /*
+    warMachine.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.append(li);
+    });
+    */
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id='greate-houses'>
+<!--
+       Пример вывода
+        <li>Ланнистеры:
+            <ul>
+                <li>Глава: Тайвин Ланнистер.</li>
+                <li>Наследник: Джейме Ланнистер.</li>
+                <li>Девиз: Услышь мой рёв!</li>
+                <li>Резиденция: Утес Кастерли.</li>
+            </ul>
+        </li>
+-->
+    </ul>
+    <script>
+        /*
+        Отправьте AJAX-запрос на адрес "http://danit.com.ua/westeros-great-houses-json".
+        В качестве ответа вы получите массив объектов вида:
+        {
+            "name": "Ланнистеры",
+            "words": "Услышь мой рёв!",
+            "head": "Тайвин Ланнистер",
+            "heir": "Джейме Ланнистер",
+            "place": "Утес Кастерли"
+        }
+        
+        Используя полученный ответ, Выведите внутри ul с id="greate-houses" список Великих домов Вестероса с данными о них: Название, и в виде вложенного списка - глава, наследник, девиз, резиденция. Пример есть в закоментированной части разметки страницы.
+        */
+        const request = new XMLHttpRequest();
+        request.open('GET', "http://danit.com.ua/westeros-great-houses-json");
+        request.responseType = 'json';
+        request.send()
+        request.onload = function() {
+                if (request.status >= 300) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+                    console.log(`Ошибка ${request.status}: ${request.statusText}`); // Например, 404: Not Found
+                }
+                else { 
+                    const result = request.response;
+                    const greatestHouses = result.map(({name, words, head, heir, place})=>{
+                    return `<li>${name}
+                        <ul>
+                            <li>Глава: ${head}.</li>
+                            <li>Наследник: ${heir}.</li>
+                            <li>Девиз: ${words}</li>
+                            <li>Резиденция:${place}.</li>
+                        </ul>
+                        </li>   
+                        `
+                    }).join("");
+                    const div = document.getElementById('greate-houses')
+                    div.innerHTML = greatestHouses;
+                }
+            };
+        request.onerror = function(){
+            alert('Запрос не удался.')
+        }
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <form action="" id="add-product">
+                <div class="form-group">
+                    <label for="email">Название товара</label>
+                    <input type="text" name="product-name" class="form-control" placeholder="Enter product name" >
+                </div>
+                <div class="form-group">
+                    <label for="email">Код товара</label>
+                    <input type="text" name="product-code" class="form-control" placeholder="Enter product code" >
+                </div>                
+                <div class="form-group">
+                    <label for="pwd">Цена товара</label>
+                    <input type="text" name="product-price" class="form-control" placeholder="Enter password" id="pwd">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="row">
+            <!--
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Vans Sk8-Hi MTE Shoes</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Style: VA33TXRJ5</h6>
+                        <p class="card-text">
+                            The Vans All-Weather MTE Collection features footwear and apparel designed to withstand the elements whilst still looking cool. </p>
+                        <div class="buy d-flex justify-content-between align-items-center">
+                            <div class="price text-success">
+                                <h5 class="mt-4">$125</h5>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+-->
+        </div>
+    </div>
+    <script>
+        /*
+    Напишите код, который работает так: 
+    1. Пользователь заполняет форму добавления товара, и нажав Submit - отправляет AJAX-запрос типа POST 
+    по адресу: "http://danit.com.ua/products" с формате urlencode, указан в качестве Authorization заголовка строку 
+    вида "Bearer token", где token  - строка, сохраненная в Locastorage в предыдущей задаче.
+
+    2. Если все поля заполнены, вам придет ответ о том, что товар добавлен, вида:
+    {
+        "status": "Success",
+        "result": {
+            "product-name": "name",
+            "product-code": "34ffff",
+            "product-price": "120",
+            "id": 1
+        }
+    }.
+    3. Если нет -  ответ вида:
+    {
+        "status": "Error",
+        "message": "One or more field are empty"
+    }
+    4. Если вы неправильо отправили токен, то получите ответ вида:
+    {
+        "status": "Error",
+        "message": "You are not authorized"
+    }
+    */
+
+    const form = document.getElementById('add-product');
+    const token = localStorage.getItem('token');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = this.querySelector('[name=product-name]').value;
+        const code = this.querySelector('[name=product-code]').value;
+        const price = this.querySelector('[name=product-price]').value;
+
+        
+
+        const request = fetch('http://danit.com.ua/products', {
+            method: 'POST',
+            headers: {
+                'Content-Type': "application/x-www-form-urlencoded",
+                'Authorization': `Bearer ${token}`
+            },
+            body: `product-name=${name}&product-code=${code}&product-price=${price}`
+        })
+        
+        request.then(
+            response => {
+                if(!response.ok) {
+                    throw new Error('Ошибка');
+                }
+
+                return response.json();
+            }
+        ).then(
+            result => {
+                console.log(result);
+            }
+        )
+        
+    })
+
+    </script>
+</body>
+
+</html>

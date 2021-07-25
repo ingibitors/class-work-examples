@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* Деструктуризация - это особый синтаксис присваивания. Для начала он рассладывает массив в набор значений через запятую.
+        ... - написанный перед набором значений через запятую собирает их в массив. это называется оператор rest (остаток)
+        
+        */
+        const properties = ["Александр", "Сергеевич", "88 кг", "189 см", "IQ - 146", "45 размер"];
+        const [name, lastName, ...userInfo] = properties;
+        // userInfo = ["88 кг", "189 см", "IQ - 146", "45 размер"];
+        console.log(name);
+        console.log(lastName);
+        console.log(userInfo);
+    </script>
+</body>
+
+</html>

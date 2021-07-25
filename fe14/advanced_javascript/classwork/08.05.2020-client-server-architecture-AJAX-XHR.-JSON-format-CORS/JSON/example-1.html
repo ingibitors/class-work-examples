@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        // JSON - работа с объектами
+        const arr = ["Ольга Равноапостольная", "Всеслав Полоцкий", "Владимир Ярославович"];
+        console.log(arr);
+
+        const strFromArr = JSON.stringify(arr); // массив стал строкой в формате JSON, созданная с помощью JSON.stringify()
+        console.log(strFromArr);
+
+        const strToArr = JSON.parse(strFromArr); // благодаря тому, что строка у нас в формате JSON, мы можем ее заново прератить в массив с помощью JSON.parse()
+        console.log(strToArr);
+        */
+
+        
+        const obj = {
+            name: "Ольга",
+            lastName: " Равноапостольная",
+            children: ["Князь Игорь", "Князь Олег"]
+        };
+        console.log(obj);
+        
+        const strFromObj = JSON.stringify(obj); // объект стал строкой в формате JSON, созданная с помощью JSON.stringify()
+        console.log(strFromObj);
+        
+        const objFromStr = JSON.parse(strFromObj); // благодаря тому, что строка у нас в формате JSON, мы можем ее заново прератить в объект с помощью JSON.parse()
+        console.log(objFromStr);
+
+        const str = '["Строка"]';
+        console.log(JSON.parse(str));
+
+        const obj1 = {
+            name: "Алекс"
+        };
+
+        const obj2 = {
+            name: "Алекс"
+        };
+
+        const obj1Str = JSON.stringify(obj1);
+        const obj2Str = JSON.stringify(obj2);
+
+        console.log(obj1Str === obj2Str);
+        
+    </script>
+</body>
+
+</html>

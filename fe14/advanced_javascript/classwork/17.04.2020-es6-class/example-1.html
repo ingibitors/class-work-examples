@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Employee {
+            constructor(company, name, status, birthday) {
+                this.company = company;
+                this.name = name;
+                this.status = status;
+                this.birthday = birthday;
+            }
+
+            getAge() {
+                const today = new Date();
+                const birthDate = new Date(this.birthday);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                let monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+        }
+
+        const receptionGirl1 = new Employee("Dan.IT", "Кристина", "reception girl", "12.12.1990")
+        console.log(receptionGirl1);
+        console.log(receptionGirl1.getAge());
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const receptionGirl1 = {
+            company: "Dan.IT",
+            name: "Кристина",
+            status: "reception girl",            
+            birthday: "12.12.1990",
+            getAge() {
+                const today = new Date();
+                const birthDate = new Date(this.birthday);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                let monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+        };
+        
+        console.log(receptionGirl1.getAge());
+        
+        const teacher1 = {
+            company: "Dan.IT",
+            name: "Богдан",
+            status: "teacher",
+            birthday: "03.01.1986",
+            getAge() {
+                const today = new Date();
+                const birthDate = new Date(this.birthday);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                let monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+        };        
+        
+        console.log(teacher1.getAge());
+        
+        const mentor1 = {
+            company: "Dan.IT",
+            name: "Алексей",
+            status: "mentor",
+            birthday: "06.07.2002",
+            getAge() {
+                const today = new Date();
+                const birthDate = new Date(this.birthday);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                let monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+        };
+        
+        console.log(mentor1.getAge());
+
+    </script>
+</body>
+
+</html>

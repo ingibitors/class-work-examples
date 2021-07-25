@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Допишите объекту product метод getReviewByDate.
+        Метод получает дату искомого отзыва, находит его в массиве reviews объекта,
+        и возвращает объект, описывающий нужны отзыв.
+        */
+        const product = {
+            name: "Lenovo X120S",
+            price: 12000,
+            reviews: [{
+                date: "12.09.2019",
+                text: "Хорошо работает как подставка для кофе",
+                userName: "Alex"
+            }, {
+                date: "03.15.2020",
+                text: "Еще на нем отлично можно жарить яичницу",
+                userName: "Bragin"
+            }],
+            getReviewByDate(dateOfReviews){
+                const result = this.reviews.find(({date}) => date === dateOfReviews)
+                return result
+            }
+        }
+        console.log(product.getReviewByDate("03.15.2020"));
+    </script>
+</body>
+</html>

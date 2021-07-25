@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function isAdult(age) {
+            console.log(this);
+            return (age > 18);
+        }
+
+        const user1 = {
+            name: "Тацумаки",
+            "last name": "Смерч Ужаса",
+            getPermission: function() {
+                console.log(this); // метод getPermission принадлежит объекту user1, а значит и this
+                isAdult(this.age); // неважно, что функция isAdult вызывается внутри метода getPermission - все равно она принадлежит объекту Window, а значит this в момент ее вызова будет равен Window
+                return (this.age > 18);
+            },
+            tabel: {
+                "biology": 11,
+                "phisic": 8,
+                "history": 12,
+                calcAvarageScore: function () {
+                    console.log(this);
+
+                    calcScoreCount(); // this будет равен Window
+
+                    // this.calc = function() {console.log(this)}
+                    function calcScoreCount() {
+                        console.log(this);
+                    }
+                }
+            }
+        };
+        // user1.getPermission(); // метод getPermission принадлежит объекту user1, а значит и this в момент его вызова будет ссылаться на объект user1.
+        // общее правило - при вызове метода this - это всегда ОБЪЕКТ ПЕРЕД ТОЧКОЙ
+        
+        // user1.tabel.calcAvarageScore(); // this внутри метода будет ссылаться на объект tabel, потому что принадлежит ему в момент вызова. И неважно кому принадлежит сам объект tabel - calcAvarageScore работает на него.
+        // функция же calcScoreCount хоть и создана внутри функции calcAvarageScore, которая принадлежит объекту tabel, но сама она не принадлежит ему - она свободная функция, а значит this внутри нее будет равен Window
+
+        setTimeout(user1.getPermission, 1000); // this внутри любой функции, переданой setTimeout будет равен Window
+        /*
+        const func2311 = user1.getPermission;
+        setTimeout(func2311, 1000);
+        */
+    </script>
+</body>
+
+</html>

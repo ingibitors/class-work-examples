@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .war-machine-list {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .war-machine {
+            text-decoration: none;
+            padding: 10px 15px;
+            color: red;
+            border: 1px solid red;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <menu id='menu' class="war-machine-list">
+        <a href="#" class="war-machine">Отравленный кинжал</a>
+        <a href="#" class="war-machine">Золотой бог</a>
+        <a href="#" class="war-machine">Гарганто</a>
+        <a href="#" class="war-machine">Фламберг</a>
+        <a href="#" class="war-machine">Рыцарь</a>
+        <a href="#" class="war-machine">Золар Ауперкаль</a>
+        <a href="#" class="war-machine">Казнь</a>
+        <a href="#" class="war-machine">Вечный голод</a>
+        <a href="#" class="war-machine">Покровитель</a>
+    </menu>
+
+    <p id="war-machine-number"></p>
+    <!-- При клике на пункт меню выводите его номер в p с id
+    "war-machine-number". Напишите для этого отдельную функцию
+    getElementNumber без создания промежуточного массива elementsArr. -->
+    <script>
+        const menu = document.getElementById("menu");
+        menu.addEventListener("click", function(e){
+            e.preventDefault();
+            const {target} = e;
+            // var {target} = e;
+            const list = this.querySelectorAll("a");
+            const index = [].indexOf.call(list, e.target);
+            console.log(index);
+        })
+    </script>
+</body></html>

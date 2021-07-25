@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="axios.min.js"></script>
+    <script>
+        const urls = ["https://jsonplaceholder.typicode.com/todos/1", "https://jsonplaceholder.typicode.com/todos/2", "https://jsonplaceholder.typicode.com/todos/3"];
+        const promises = urls.map(url => fetch(url));
+
+        // Promise.all(promises).
+        //     then(responses => Promise.all(responses.map(response => response.json()))).
+        //         then(results => console.log(results));
+
+        const requests = urls.map(url => axios(url));
+        axios.all(requests).
+            then(responses => {
+                responses.forEach(({data}) => console.log(data))
+            })
+    </script>
+</body>
+</html>

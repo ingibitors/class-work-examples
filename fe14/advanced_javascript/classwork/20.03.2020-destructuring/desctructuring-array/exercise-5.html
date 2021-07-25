@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .war-machine-list {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .war-machine {
+            text-decoration: none;
+            padding: 10px 15px;
+            color: red;
+            border: 1px solid red;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+<menu id='menu' class="war-machine-list">
+    <a href="#" class="war-machine">Отравленный кинжал</a>
+    <a href="#" class="war-machine">Золотой бог</a>
+    <a href="#" class="war-machine">Гарганто</a>
+    <a href="#" class="war-machine">Фламберг</a>
+    <a href="#" class="war-machine">Рыцарь</a>
+    <a href="#" class="war-machine">Золар Ауперкаль</a>
+    <a href="#" class="war-machine">Казнь</a>
+    <a href="#" class="war-machine">Вечный голод</a>
+    <a href="#" class="war-machine">Покровитель</a>
+</menu>
+
+<p id="war-machine-number"></p>
+<!-- При клике на тег с классом war-machine
+выведите в p с id="war-machine-number"
+номер элемента в списке меню, на который мы кликнули.
+Используйте свежеполученные знания
+-->
+<script>
+    const menu = document.getElementById("menu");
+    const paragraph = document.getElementById("war-machine-number");
+    menu.addEventListener("click", function(e){
+        // console.log(this);
+        // console.log(e.target);
+        const menuItems = this.querySelectorAll("a.war-machine");
+        const arr = [...menuItems];
+        console.log(arr);
+        const index = arr.indexOf(e.target);
+        paragraph.textContent = index + 1;
+    });
+
+</script>
+</body>
+</html>

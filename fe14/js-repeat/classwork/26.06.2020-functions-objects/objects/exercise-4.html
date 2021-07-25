@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    Напишите функцию getShortProductInfo, 
+    которая получает объект типа product, 
+    и возвращает из него объект, описывающий краткое описание товара 
+    (тот же объект без свойств fullDescr reviews)
+    */
+       const product = {
+           name: "Lenovo X120S",
+           fullName: "X120S (233-544-2)",
+           price: 18600,
+           shortDescr: "",
+           fullDescr: "",
+           reviews: []
+       };
+
+       function getShortProductInfo(obj) {
+           const {fullDescr, reviews, ...output} = obj;
+           return output;
+       }
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Спросить у пользователя фразу, и вывести ответ - есть ли она в строке, и если есть - сколько раз тут упоминается (без учета регистра)
+        */
+        const str = "Проблема Кошерности Птеродактиля - это то, из-за чего Кристофер Робин не может нормально спать уже несколько недель";
+        const userPhrase = prompt("Введите искомую фразу");
+        const expression = new RegExp(userPhrase, "gi");
+
+        const matches = str.match(expression);
+
+        if(matches) {
+            console.log(`Искомая фраза встречается в исходной строке ${matches.length} раз`);
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .question {
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .answer {
+            font-style: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!--    Напишите функцию-конструктор, создающую объект,
+    реализующий такой функционал: у нас на странице есть вопрос.
+    Пр первом клике на него под ним открывается ответ на вопрос.
+    При повтором - ответ прячется. Разметку вы найдете в файле.-->
+<!--    <a href="" class="question">Девиз дома Баратеонов</a>-->
+
+    <div id="root"></div>
+
+    <script>
+    function CollapseQuestion(tagName, question,answer, questionClasName, answerClassName){
+        this.tagName = tagName;
+        this.question = question;
+        this.answer = answer;
+        this.questionClasName = questionClasName;
+        this.answerElem = null;
+        this.createElem = function(tag, className, text) {
+            const elem = document.createElement(tag);
+            elem.className = className;
+            elem.textContent = text;
+            return elem;            
+        }
+        this.render = function (){
+            const elem = this.createElem(this.tagName, this.questionClasName, this.question);
+            elem.addEventListener("click",()=>{ 
+                if(!this.answerElem) {
+                    this.answerElem = this.createElem("p", this.answerClassName, this.answer);
+                    elem.after(this.answerElem);                    
+                }  
+                else {
+                    this.answerElem.remove();
+                    this.answerElem = null;
+                }
+            });
+            return elem;
+        }
+    }
+
+    const question1 = new CollapseQuestion("p", "Девиз дома Баратеонов","Нам Ярость!","question", "answer");
+    const question2 = new CollapseQuestion("p", "Девиз дома Таргариенов", "Пламя и кровь!", "question", "answer")
+    // const question3 = new CollapseQuestion()
+    // console.log(question1)
+    const questionList = document.getElementById("root");
+    questionList.append(question1.render(), question2.render());
+    </script>
+</body>
+</html>

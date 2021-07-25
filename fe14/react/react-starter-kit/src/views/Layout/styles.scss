@@ -1,0 +1,7 @@
+.page {
+  display: grid;
+  grid-template-columns: 300px 50px 1fr;
+  grid-template-rows: 100px 50px 1fr;
+  height: 100vh;
+  padding: 5px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<ul><li>Товар: Lenoco X120S, Категория: 1</li></ul>
+    <script>
+        /*
+        const productsUrl = "http://danit.com.ua/products";
+        const categoriesUrl = "http://danit.com.ua/categories";
+
+        const request1 = fetch(productsUrl);
+        request1.then(response => response.json())
+            .then(result => {
+                const request2 = fetch(categoriesUrl);
+                request2.then(response => response.json(categoriesUrl))
+                    .then(result2 => {
+                        console.log(result);
+                        console.log(result2)
+                    });
+            });
+        */
+
+        const urls = ["http://danit.com.ua/products", "http://danit.com.ua/categories"];
+        const requests = urls.map(url => fetch(url));
+        Promise.all(requests)
+        .then(responses => {
+            const results = responses.map(response => response.json());
+            Promise.all(results).then(results => {
+                console.log(results);
+            })
+        });
+
+        
+    </script>
+</body>
+</html>

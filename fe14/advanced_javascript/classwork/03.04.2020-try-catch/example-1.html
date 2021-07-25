@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       
+        /*
+        // без try ... catch - страница выдает красную ошибку и 18 строка не выполняется - то есть весь код дальше на странице не работает
+
+        const name = prompt("You name");
+        const lastName = prompt("You last name");
+        const login = `${name[0].toUpperCase()}${lastname}`; // ошибка, переменная lastname не определена! 
+        
+        const age = +prompt("Введите ваш возвраст");
+        */
+        
+        
+        // С try ... catch - можно увидеть ошибку и 33 строка выполниться независимо от того, были ли ошибка или нет
+        
+        try {
+            const name = prompt("You name");
+            const login = `${name[0].toUpperCase()}${lastname}`; // ошибка, переменная lastname не определена!   
+            const lastName = prompt("You last name");
+            
+        } catch (error) {
+            console.log(`Произошла ошибка ${error.name}. Подробнеее - ${error.message}`);
+        }
+
+        const age = +prompt("Введите ваш возраст");
+       
+
+    </script>
+</body>
+
+</html>

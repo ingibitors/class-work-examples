@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="wrapper fadeInDown pt-4">
+    <div id="formContent">
+
+        <!-- Login Form -->
+        <form id="login-form" action="http://danit.com.ua/login">
+            <input type="text" class="fadeIn second" name="login" placeholder="login" required>
+            <input type="text" class="fadeIn third" name="password" placeholder="password" required>
+            <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!--  Напишите AJAX-запрос методом POST на адрес "http://danit.com.ua/login" для
+  Авторизации пользователя. 
+  
+  Подробно:
+  Если пользователь ввел правильный логин и
+  пароль - нужно вывести под формой сообщение "Вы авторизированы!" 
+  и сохранить Bearer токен в localStorage.
+  Если неправильный - вывести сообщение "Логин или пароль неверные,
+  попробуйте еще раз".
+  Тестовые правильные данные:
+  login: Mandor
+  password: Savall
+  
+  данные нужно передавать в формате "json"
+  
+  В случае успешного ответа вы получите объект вида:
+  {
+    "status": "Success",
+    "token": "6f0c70f3e83d"
+}
+  В случае неуспешного ответа - объект вида:
+  {
+    "status": "Error",
+    "message": "Login or password are incorrect",
+    "token": null
+}
+
+  Используйте XMLHttpRequest.
+  -->
+
+<script>
+
+const localLogin = localStorage.getItem('token');
+console.log(localLogin);
+
+const loginForm = document.getElementById('login-form');
+loginForm.addEventListener('submit', onSubmitFunction);
+
+function onSubmitFunction(e) {
+  e.preventDefault();
+
+  const login = this.querySelector('[name=login]').value;
+  const password = this.querySelector('[name=password]').value;
+
+  const body = {
+    login, password
+  };
+
+  const request = new XMLHttpRequest();
+  request.open('POST', 'http://danit.com.ua/login');
+  request.setRequestHeader('Content-Type', 'application/json');
+  request.responseType = "json";
+  request.send(JSON.stringify(body));
+  request.onload = () => {
+    if (request.status > 300) {
+        console.log(request.statusText);
+    }
+    else {
+      if(request.response.status === 'Success') {
+        this.insertAdjacentHTML("beforeend",'<p class = "aliluia-message">Поздравляю, вы авторизированны</p>')
+        localStorage.setItem('token', request.response.token);
+      } else {
+        this.insertAdjacentHTML("beforeend",'<p class = "aliluia-message">Не поздравляю, вы не авторизированны</p>')
+      }
+    }
+  }
+            
+}
+
+</script>
+
+</body>
+
+</html>

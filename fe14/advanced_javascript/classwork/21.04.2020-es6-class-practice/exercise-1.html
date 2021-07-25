@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    Напишите класс Пациент с такими параметрами:
+    - ФИО;
+    - дата рождения;
+    - пол;
+    
+    и методом:
+    - getAge, возвращающим возраст пациента;
+    
+    И на его основе создайте 2 расширенных класса:
+    1. ПациентКардиолога, с дополнительными параметрами:
+    - среднее давление;
+    - перенесенные проблемы с сердечно-сосудистой системой;
+    
+    и методом:
+    - высчитать индекс массы тела;
+    2. ПациентСтоматолога с дополнительными параметрами:
+    - дата последнего визита;
+    - текущее лечение;    
+    */
+
+        class Patient {
+            constructor (name,lastName,midleName,birthday,sex){
+                    this.name = name;
+                    this.lastName = lastName;
+                    this.midleName = midleName;
+                    this.birthday = birthday; // "1986.01.03"
+                    this.sex = sex;
+            }
+            
+            getAge(){
+                const now = new Date();
+                const [year, month, day] = this.birthday.split(".");
+                let age = now.getFullYear() - year;
+                const bithMonth = now.getMonth() + 1;
+                if (month > bithMonth || (month === bithMonth && day > now.getDate())){
+                    age--;
+                } 
+                return age;
+            }
+        }
+        
+        class CardioPatient extends Patient {
+            constructor(midlePressure,troubleList,height,weight,...args){
+                super(...args);
+                this.midlePreasure = midlePressure;
+                this.troubleList = [...troubleList];
+                this.height = height;
+                this.weight = weight;
+            }
+
+            getBodyIndex() {
+                return this.weight / (this.height/100)**2;
+            }
+        }
+
+        const firstPatient = new CardioPatient("120/70",["hearth pain","dyspnea"],170,75,"Igor","Stalin","Adolfovich","1941.09.01","Man");
+        console.log(firstPatient);
+        console.log(firstPatient.getAge());
+        console.log(firstPatient.getBodyIndex());
+      
+       
+    </script>
+</body>
+</html>

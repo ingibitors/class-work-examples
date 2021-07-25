@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+   Возьмите код из предыдущего примера и добавьте ему такие сеттеры и геттеры:
+    - role (можно установить роль только из списка: super admin, admin, main manager, content manager);
+    - login (не меньше трех букв);
+    
+    А также добавьте метод getPasswordStrength, который проверяет силу пароля. Метод получает строку (пароль) и возвращает один из трех вариантов:
+    - weak - меньше 6 символов, не содержимт букв или цифр;
+    - medium - больше 6 символов, содержит цифры и буквы, но не содержит знаков: -_^$%#@*&?
+    - strong - больше 6 символов, содержит буквы, цифры и спецсимволы: -_^$%#@*&?
+    */
+
+    class User {
+            constructor(role, login, email, password){
+                this.role = role;
+                this.login = login;
+                this.email = email;
+                this.passowrd = password;
+            }
+
+            set role(newRole) {
+                if(['super admin', 'admin', 'main manager', 'content manager'].includes(newRole)) {
+                    this._role = newRole;
+                } else {
+                    throw new Error("роль должна быть из списка: super admin, admin, main manager, content manager");
+                }
+            }
+            get role() {
+                return this._role;
+            }
+            
+            set login(newLogin) {
+                if(newLogin.length >= 3) {
+                    this._login = newLogin;
+                } else {
+                    throw new Error("логин пользователя должен состоять минимум из 3 символов");
+                }
+            }
+
+            get login() {
+                return this._login;
+            }
+
+            isValidEmail(email){
+                // return (email.includes('@') && email.includes('.') && !email.includes(' '))
+                if (email.includes('@') && email.includes('.') && !email.includes(' ')) {
+                    return true                     
+                }
+                return false;
+            }
+        }
+
+        const admin = new User("admin", "V.Pupkin", "v_pupkin@gmail.com", "vasya");
+        admin.role = "main manager";
+        /*
+        admin.role("main manager");
+        */        
+        console.log(admin.role);
+
+       
+        
+    </script>
+</body>
+</html>
+</html>

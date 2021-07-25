@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        /*
+        Выведите массив books в виде списка книг в div с id="root". Если где-то проблемы с выводом объекта - он не должен появиться на странице, вместо этого выведите в консоль ошибку
+        */
+        const books = [{
+                author: "Скотт Бэккер",
+                name: "Тьма, что приходит прежде",
+                price: 70
+            }, {
+                author: "Скотт Бэккер",
+                name: "Воин-пророк",
+            }, {
+                name: "Тысячекратная мысль",
+                price: 70
+            }, {
+                author: "Скотт Бэккер",
+                name: "Нечестивый Консульт",
+                price: 70
+            }, {
+                author: "Дарья Донцова",
+                name: "Детектив на диете",
+                price: 40
+            },
+            {
+                author: "Дарья Донцова",
+                name: "Дед Снегур и Морозочка",
+            }
+        ];
+        
+        const root = document.getElementById('root');
+        const correctBooks = books.filter(function({author, name, price}){
+            try{
+                if(!author){
+                    throw new Error ("Автор не указан.");
+                }
+                if(!name){
+                    throw new Error ("Названия книги не указано.");
+                }
+                if(!price){
+                    throw new Error ("Цена не указана");
+                }
+                return true;
+            }
+            catch(e){
+              console.log(e);
+              return false;
+            };
+        });
+        const booksList = correctBooks.map(({price,name,author})=>`<li>${name}: ${author} - ${price}</li>`);
+        root.insertAdjacentHTML("beforeend", `<ul>${booksList.join("")}</ul>`);
+    </script>
+</body>
+
+</html>

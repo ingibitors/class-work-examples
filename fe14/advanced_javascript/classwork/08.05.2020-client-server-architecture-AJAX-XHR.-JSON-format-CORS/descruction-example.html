@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        userArr = ["Кэтрин Пирс", "Классическая дева в беде", "http://danit.com.ua/views/img/katrin-piece.jpg"];
+        const [userName, userShortInfo, userImage] = userArr; 
+        /*
+        userName = userArr[0];
+        userShortInfo = userArr[1];
+        userImage = userArr[2];
+        */
+
+        userObj = {
+            name: "Кэтрин Пирс", 
+            shortInfo: "Классическая дева в беде", 
+            image: "http://danit.com.ua/views/img/katrin-piece.jpg"
+        };
+        const {name, image, shortInfo} = userObj; 
+        /*
+        name = userObj.name;
+        image = userObj.image;
+        shortInfo = userObj.shortInfo;
+        */
+    </script>
+</body>
+</html>

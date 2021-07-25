@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<form action="" id="login-form">
+<!--    <input type="email" name="user-email" id="login-email" class="form-control" required>-->
+</form>
+<!-- Напишите функцию-конструктор поле ввода (input), которая:
+   1. Создает однострочное поле ввода заданого типа (text, email, password и т.д.), с нужными классами, свойством name и id.
+   2. Метод render возвращает DOM-элемент input, созданный на основе свойств этого объекта.
+   3. Если поле обязательное  - выводить ошибку с указаным текстом если пользователь поставл в поле ввода курсор - а потом убрал, ничего не введя. а также выводить сообщение об ошибке с задаными текстом, если пользователь.
+   3. Подумайте, как защитить эту функцию-конструктор от передачи неправильны данных на этапе создания поля ввода.
+   
+      Создайте с помощью этой функции 2 поля ввода: логина и пароля, оба обязательные, и выведите их внутри формы с id="login-form"   -->
+    <script>
+
+        function Input(){
+            
+        }
+        
+        const loginField = new Input("email", "user-email", "login-email", "form-control", true, "Поле email должно быть заполненно!");
+//        loginField.render(); // вернет <input type="email" name="user-email" id="login-email" class="form-control" required>
+    </script>
+</body>
+</html>

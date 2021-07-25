@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .card{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+        }
+        .close{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: red;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .card__title{
+            font-size: 26px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .card__subtitle{
+            font-size: 18px;
+            
+        }
+        
+        
+    </style>    
+</head>
+<body>
+    
+    <!-- <div class="card">
+        <span class = "close"> X </span> 
+        <h3 class="card__title">Lenovo X120S</h3>
+        <h4 class="card__subtitle">X120S (233-544-2)</h4>
+        <p class="card__price">18600</p>
+    </div>  -->
+    <script>
+    /*
+    напишите функцию createCard, Которая выводит объект product в виде карточки товара на экран.
+     HTML-разметка карточки уже написана.
+    При клике на крестик в правом верхнем углу DOM-элемент карточки должен удаляться.
+    */
+        const product = {
+           name: "Lenovo X120S",
+           fullName: "X120S (233-544-2)",
+           price: 18600
+       };
+
+       function createCard (card){
+           const {name, fullName, price} = card;
+           const cardConainer = createElement("div", {className: "card"});
+           const close = createElement("span", {className: "close"}, "X");
+           const deleteCard = deleteElem.bind(div);
+           close.addEventListener("click",deleteCard);
+           cardConainer.append(close);
+            const cardBody = ` <h3 class="card__title">${name}</h3>
+                                <h4 class="card__subtitle">${fullName}</h4>
+                                <p class="card__price">${price}</p>`;
+            cardConainer.insertAdjacentHTML("beforeend", cardBody);
+
+            return cardConainer;
+       }
+       
+       function deleteElem(){
+           this.remove();
+       }
+
+       const lenovoProduct = createCard(product);
+       document.body.append(lenovoProduct);
+
+       createElement(name, attr, content) {
+            const elem = document.createElement(name);
+            for(const [key, value] of Object.entries(attr)) {
+                elem[key] = value;
+            }
+            elem.innerHTML = content;
+            return elem;
+       }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--  Подключаем по CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<!--   Или так -->
+    <!--    <script src="axios.min.js"></script>-->
+    <script>
+        // fetch
+        /*
+        fetch('http://danit.com.ua/free-towns-list-json')
+            .then(response => {
+                console.log(response);
+                const result = response.json();
+                console.log(result);
+                return response.json();
+            })
+            .then(result => console.log(result));
+*/
+        // axios
+        
+        axios.get("http://danit.com.ua/free-towns-list-json")
+            .then(response => {
+                console.log(response);
+                console.log(response.data)});
+
+    </script>
+</body>
+
+</html>

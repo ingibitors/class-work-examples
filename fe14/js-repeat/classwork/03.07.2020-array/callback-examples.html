@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const sallaryGrn = [12000, 45000, 36000];
+        const sallaryDollar = sallaryGrn.map(function(item){
+            return item / 27;
+        });
+        /*
+        const anomnymousFunc = function(arrElem) {
+            return item / 27;
+        }
+        const sallaryDollar = [];
+        for(const item of sallaryGrn) {
+            const transformElem = anomnymousFunc(item);
+            sallaryDollar.push(transformElem);
+        }
+        delete window.anomnymousFunc;
+        */
+
+        const sallaryHigh = sallaryGrn.filter(function(item){
+            return item  > 20000;
+        });
+        /*
+        const anomnymousFunc = function(arrElem) {
+            return (item > 20000);
+        }
+        const sallaryHigh = [];
+        for(const item of sallaryGrn) {
+            const result = anomnymousFunc(item);
+            if(result) {
+                sallaryHigh.push(item);
+            }
+        }
+        delete window.anomnymousFunc;
+        */  
+       
+        const result = sallaryGrn.includes(20000);
+        /*
+        var value = 20000;
+        var tempResult = false;
+        for(const elem of sallaryGrn) {
+            if(value === elem) {
+                tempResult = true;
+                break;
+            }
+        }
+        const result = tempResult;
+        delete Window.tempResult;
+        */
+
+        const result = sallaryGrn.includes(233333);
+        console.log(result);
+        /*
+        const searchValue = 2333333;
+        const temFlag = false;
+        for(const value of sallaryGrn) {
+            if(value === searchValue) {
+                temFlag = true;
+                break;
+            }
+        }
+        const result = temFlag;
+        delete Window.searchValue;
+        delete Window.temFlag;
+        */
+
+    </script>
+</body>
+</html>

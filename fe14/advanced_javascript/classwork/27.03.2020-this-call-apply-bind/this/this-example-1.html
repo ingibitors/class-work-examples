@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            color: red;
+            padding: 10px 15px;
+            border: 1px solid red;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#" id="btn-test" class="btn">Click me!</a>
+    <script>
+        // this - внутренняя переменная функци, которая при вызове функции всегда ссылается на объект, КОТОРОМУ принаджелит функция В МОМЕНТ ВЫЗОВА.
+
+        /*
+
+        function isAdult(age) {
+            console.log(this);
+            return (age >= 18);
+        }
+
+        console.log(window.isAdult) // при объявлении в глобальной области видимости функция принадлежит глобальному объекту Window
+
+        isAdult(); // this === Windows
+
+        */
+       
+
+        const button = document.getElementById("btn-test");
+        button.addEventListener("click", reverseBtn); // в момент клика функция reverseBtn будет принадлежать кнопке, а значит и this будет ссылаться на нее 
+
+        // reverseBtn(); // в момент вызову функции она будет принадлежать глобальному объекту Window, а значит и this будет ссылать ся на него
+
+        function reverseBtn() {
+            console.log(this);
+            const {color, backgroundColor} = window.getComputedStyle(this);
+            this.style.color = backgroundColor;
+            this.style.backgroundColor = color;
+        }
+
+    </script>
+
+</body>
+
+</html>

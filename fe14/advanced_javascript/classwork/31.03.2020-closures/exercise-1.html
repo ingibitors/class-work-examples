@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    Задание: напишите функцию createUniqList, которая получает в качестве аргумента массив строк, и возвращает функцию, которая будет работать с 
+    этим массивом. Возвращаемая функция в качестве аргументов будет получать 2 значения:
+    - операцию, которую нужно совершить с массивом ("add" - добавить строку в массив, "del" - удалить, "replace" - заменить);
+    - строку, которую нужно добавить/удалить/изменить;
+    - необязательный параметр - строку, на которую нужно заменить.
+    
+    Функция работает так:
+    - если добавляемое значение уже есть - функция его не добавляет, и вовзращает ответ "такое значение уже есть в списке";
+    - если добавляемого значения нет в массиве - функция добавляет его в конец;
+    - если удаляемого значения нет - функция возврщает ответ "такого значенния нет в списке";
+    - если заменяемого значения нет в списке - функция возвращает ответ "такого значения нет в списке";
+    
+    Пример:
+    */
+        const uniqeList = createUniqList(["Александр", "Олег", "Фанни"]);
+        uniqeList("add", "Андрей"); 
+        uniqeList("add", "Андрей"); // "такое значение уже есть в списке"
+        
+        function createUniqList (uniqeArr) {
+            return function (operation, value, newValue) {
+                const valInArr = uniqeArr.includes(value);
+                if ( operation === 'add' && valInArr) {
+                    return 'такое значение уже есть в списке';
+                } else if (operation === 'add'){
+                    uniqeArr.push(value);
+                    return true;
+                }
+
+                if ( operation === 'del' || operation === 'replace' && !valInArr) {
+                    return 'такого значения нет в массиве';
+
+                } else if ( operation === 'del') {
+                    const index = uniqeArr.indexOf(value);
+                    uniqeArr.splice(index, 1);
+                    return true;
+
+                } else if (operation === 'replace') {
+                    const index = uniqeArr.indexOf(value);
+                    uniqeArr.splice(index, 1, newValue);
+                    return true;
+                }
+             }
+        }
+
+    </script>
+</body>
+</html>

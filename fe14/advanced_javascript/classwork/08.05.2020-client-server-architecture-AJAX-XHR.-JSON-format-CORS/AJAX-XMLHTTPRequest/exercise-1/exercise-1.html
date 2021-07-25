@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+               <h2>Великие дома Вестероса</h2>
+                <ol id="house-list">
+                    <!-- <li>Ланнистеры: Услышь мой рёв!</li> -->
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+        Отправьте AJAX-запрос на адрес "http://danit.com.ua/westeros-great-houses".
+        Ответ должен быть в формате строки вида: 
+        "Ланнистеры: Услышь мой рёв! Баратеоны: Нам - ярость! Старки: Зима близко! Тиррелы: Вырастая - крепнем! Аррены: Высокий, как честь! Таргариены: Кровь и пламя! Мартеллы: Непреклонные, несгибаемые, несдающиеся!"
+        
+        в котором данные о Великих домах Вестероса написаны через знак восклицания и пробел, а внутри данных название дома и его девиз разделены двоеточием и пробелом.
+        
+        Используя полученный ответ, Выведите внутри ol с id="house-list"
+        список всех Великих домов Вестероса с их девизами через двоеточие.
+        */
+       /*
+       1. Проверить что адрес вообще работает.
+       2. Сравнить ответ с примером ответа из документации.
+       3. Отправить запрос и получить ответ.
+       4. Обработать ответ.
+       */
+       const request = new XMLHttpRequest();
+       request.open('GET', "http://danit.com.ua/westeros-great-houses");
+       request.send();
+       request.onload = function() {
+        if (request.status >= 300) {
+            console.log(`Ошибка ${request.status}: ${request.statusText}`);
+        } else { 
+            const housesContainer = document.getElementById("house-list");
+
+            const resultArr = request.response.split("! ");
+
+            // const houseList = resultArr.map(function(item) {
+            //     const li = document.createElement("li");
+            //     li.textContent=item;
+            //     return li;
+            // });
+            // housesContainer.append(...houseList);
+            const houseList = resultArr.map(house => `<li>${house}</li>`).join("");
+            housesContainer.insertAdjacentHTML("beforeend", houseList);
+        }
+    }
+    </script>
+</body>

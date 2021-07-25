@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
+          id="bootstrap-css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="wrapper fadeInDown pt-4">
+    <div id="formContent">
+
+        <!-- Login Form -->
+        <form id="login-form" action="http://danit.com.ua/login">
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" required>
+            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" required>
+            <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!--  Напишите AJAX-запрос методом POST на адрес "http://danit.com.ua/login" для
+  Авторизации пользователя. 
+  
+  Подробно:
+  Если пользователь ввел правильный логин и
+  пароль - нужно вывести под формой сообщение "Вы авторизированы!".
+  Если неправильный - вывести сообщение "Логин или пароль неверные,
+  попробуйте еще раз".
+  Тестовые правильные данные:
+  login: Mandor
+  password: Savall
+  
+  данные нужно передавать в формате "x-www-form-urlencoded"
+  
+  В случае успешного ответа вы получите объект с полем status, равным "Success".
+  В случае неуспешного ответа - с полем status, равным "Error".
+  -->
+
+<script>
+    const formLogin = document.getElementById('login-form');
+    formLogin.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const login = this.querySelector("[name=login]").value;
+        const password = this.querySelector("[name=password]").value;
+        const url = this.getAttribute('action');
+        const form = this;
+        $.ajax({
+            url:url,
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: `login=${login}&password=${password}`,
+            dataType: 'JSON',
+            success: function(data){
+                if(data.status === 'Success'){
+                    form.insertAdjacentHTML('beforeend','<p>Вы успешно авторизировались</p>');
+                }
+                else{
+                    form.insertAdjacentHTML('beforeend','<p>Ошибка авторизации</p>');
+                }
+            }
+        });
+    });
+
+    
+
+
+</script>
+
+</body>
+
+</html>

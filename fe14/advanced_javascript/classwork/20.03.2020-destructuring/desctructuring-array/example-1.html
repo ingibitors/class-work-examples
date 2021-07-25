@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+        // Деструктуризация - это особый синтаксис присваивания
+        const properties = ["Александр", "88 кг", "189 см", "IQ - 146", "45 размер"];
+        // const name = properties[0];
+        // const weight = properties[1];
+        // const height = properties[2];
+        // const [name, weight, height] = properties;
+        /*
+        name = "Александр", 
+        weight = "88 кг", 
+        height = "189 см", 
+        "IQ - 146", 
+        "45 размер"
+        */
+        // console.log(name);
+        // console.log(weight);
+        // console.log(height);
+
+
+        // можно пропускать какие-то параметры, чтобы сохранить в переменные только часть массива
+
+        const person = ["тенкрис", "Дракор", "л'Алва", "Южный", "324", "пурпурный"];
+        const [, lastName, clanName, , , eysColor] = person;
+
+        // console.log(person);
+        // const [, , clanName, clanPlace] = person;
+        // console.log(lastName);
+        // console.log(clanName);
+        // console.log(eysColor);
+
+/*
+        console.log(person);
+        person.splice(0, 2);
+        console.log(person);
+        */
+
+        // значения по умолчанию
+       
+        const userData = ["Алексей Михайлович", "спортсмен"];
+        const [userName, userWork, userStatus = "не женат"] = userData;
+        console.log(userName);
+        console.log(userWork);
+        console.log(userStatus);
+       
+
+
+        // присваивать можно чему угодно слева
+        // const user = {};
+        // // const person = ["тенкрис", "Дракор", "л'Алва", "Южный", "324", "пурпурный"];
+        // [, user.name, user["last name"]] = person;
+        // console.log(user);
+        
+    </script>
+</body>
+
+</html>

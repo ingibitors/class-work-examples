@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Randomiser</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .name {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 80%;
+      height: 300px;
+      font-size: 70px;
+      color: black;
+      background-color: #fffa82;
+      box-shadow: 3px 3px 30px #7b7b7b;
+    }
+
+    .button-random {
+      border: none;
+      padding: 10px 30px;
+      margin-top: 20px;
+      background-color: #72ff82;
+      outline: none;
+      font-size: 20px;
+      box-shadow: 2px 2px 30px  #7b7b7b ;
+      border-radius: 10px;
+    }
+
+    .button-random + #reset {
+      background-color: #fffa82;
+    }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <div class='name'>
+    <span id='result'>Welcome to Randomiser.</span>
+  </div>
+  <div>
+    <button id='random' class='button-random' type='button'>Get random student</button>
+    <button id='reset' class='button-random' type='button'>Reset</button>
+  </div>
+</div>
+<script>
+  /***********
+   * Рядом с этим файлом лежит файл с барабанной дробью,
+   * называется random-student-sound.mp3 - его ОБЯЗАТЕЛЬНО нужно тоже скачать.
+   * В массив в переменной allStudents - вставить список группы.
+   * И все будет работать. После каждого нажатия на кнопку 'Get random student'
+   * 2 секунды будет играть барабанная дробь и только потом появится имя следующего вызванного.
+   * ************/
+  // Module
+  function randomStudent() {
+      /*
+    let allStudents = JSON.parse(localStorage.getItem('students')) || ["Бовгар Олександр",
+      "Кондратенко Владислав",
+      "Гринцевич Надія",
+      "Мадюдя Олена",
+      "Мейстер Олександр",
+      "Молчанов Даниїл",
+      "Молчановський Антон",
+      "Мортіков Сергій",
+      "Насипана Алла",
+      "Подолинний Кирило",
+      "Портнов Дмитро",
+      "Радостєв Андрій",
+      "Репецький Микола",
+      "Савчук Назарій",
+      "Сівура Анна",
+      "Сідько Максим",
+      "Соловей Евгений",
+      "Сухоруков Ярослав",
+      "Цюпяк Мирослава",
+    "Чуріков Михайло",
+    "Якубовський Юрій",
+    "Галт Михайло",
+    "Шахтьор Ігор",
+    "Зайнуллін Герман"
+    ];*/
+          let allStudents = JSON.parse(localStorage.getItem('students')) || ["Бовгар Олександр",
+      "Кондратенко Владислав",
+      "Гринцевич Надія",
+      "Мадюдя Олена",
+      "Мейстер Олександр",
+      "Молчанов Даниїл",
+      "Молчановський Антон",
+      "Мортіков Сергій",
+      "Насипана Алла",
+      "Подолинний Кирило",
+      "Портнов Дмитро",
+      "Радостєв Андрій",
+      "Репецький Микола",
+      "Савчук Назарій",
+      "Сівура Анна",
+      "Сідько Максим",
+      "Соловей Евгений",
+      "Сухоруков Ярослав",
+      "Цюпяк Мирослава",
+    "Чуріков Михайло",
+    "Якубовський Юрій",
+    "Галт Михайло",
+    "Шахтьор Ігор",
+    "Зайнуллін Герман"
+    ];
+
+    let wasSelected = JSON.parse(localStorage.getItem('wasSelected')) || [];
+    let result;
+
+    if(allStudents.length > 0) {
+      wasSelected.push(
+          allStudents.splice(
+              Math.floor(Math.random() * allStudents.length),
+              1
+          )[0]
+      );
+      result = wasSelected[wasSelected.length - 1];
+
+      //resorting arrays
+      // allStudents = allStudents.sort(el => Math.random() - 0.5);
+      wasSelected = wasSelected.sort(el => Math.random() - 0.5);
+
+    } else {
+      allStudents = wasSelected.sort(el => Math.random() - 0.5);
+      wasSelected = [];
+      result = 'Randomiser is reloading...Press button one more time.';
+    }
+
+    localStorage.setItem('wasSelected', JSON.stringify(wasSelected));
+    localStorage.setItem('students', JSON.stringify(allStudents));
+
+    return result;
+  }
+
+  // Get elements
+  const text = document.getElementById('result');
+  const button = document.getElementById('random');
+  const reset = document.getElementById('reset');
+
+  // Add listeners
+  button.addEventListener('click', () => {
+    const audio = new Audio('random-student-sound.mp3');
+  audio.onended = () => {
+    text.textContent = randomStudent()
+  };
+  audio.play();
+  });
+  reset.addEventListener('click', () => {
+    localStorage.clear();
+  text.innerText = 'Welcome to Randomiser.';
+  });
+</script>
+</body>
+</html>

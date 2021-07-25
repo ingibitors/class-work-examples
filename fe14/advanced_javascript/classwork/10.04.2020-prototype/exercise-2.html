@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<!--   Создайте универальную функцию-конструктор товара, у которого будут такие свойства:
+   - краткое название;
+   - полное название;
+   - цена;
+   - артикул;
+   
+    А также методы:
+     - акционная цена (аргумент - размер скидки в %);
+     - стоимость доставки (1% от цены,  если цена больше 2000 - доставка бесплатно);
+     
+     Методы вынесите в прототипы.
+      -->
+    <script>
+    
+    function Good (shortName, fullName, price, article, discount = 0) {
+        this.shortName = shortName;
+        this.fullName = fullName;
+        this.price = price;
+        this.article = article;
+        this.discount = discount
+    };
+
+    Good.prototype.getDiscountPrice = function () {
+        const discountPrice = this.price * ( 1 - this.discount / 100);
+        return discountPrice;
+    }
+
+    const firstGood = new Good( 'telephone', 'mobile telephone', 100, '3434hmm', 10);
+    console.log(firstGood);
+    console.log(firstGood.getDiscountPrice());
+    
+    </script>
+</body>
+</html>

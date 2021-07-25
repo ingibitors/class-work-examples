@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    ... - написанный перед массивом, превращает его в набор значений через запятую. Это называется оператором spread (расширение)
+    */
+    const properties = ["Александр", "Сергеевич", "88 кг", "189 см", "IQ - 146", "45 размер"];
+    console.log(properties)
+    console.log(...properties)
+    
+    const users = [
+        {
+            name: "Золар",
+            "last name": "Аперкаль"
+        },
+        {
+            name: "Дракор",
+            "last name":"л'Алва"
+        }
+    ];
+    console.log(users);
+    console.log(...users);
+</script>
+</body>
+</html>

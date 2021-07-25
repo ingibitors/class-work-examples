@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="wrapper fadeInDown pt-4">
+        <div id="formContent">
+
+            <!-- Login Form -->
+            <form id="login-form" action="http://danit.com.ua/login-json">
+                <input type="text" class="fadeIn second" name="login" placeholder="login" required>
+                <input type="text" class="fadeIn third" name="password" placeholder="password" required>
+                <input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+        </div>
+    </div>
+
+<!--  Напишите AJAX-запрос методом POST на адрес "http://danit.com.ua/login-json" для
+  Авторизации пользователя. Если пользователь ввел правильный логин и
+  пароль - нужно вывести под формой сообщение "Вы авторизированы!".
+  Если неправильный - вывести сообщение "Логин или пароль неверные,
+  попробуйте еще раз".
+  Тестовые правильные данные:
+  login: Mandor
+  password: Savall
+  
+  данные нужно передавать в формате JSON
+  
+    В случае успешного ответа вы получите объект с полем status, равным "Success".
+  В случае неуспешного ответа - с полем status, равным "Error".
+  
+  Для написания кода используйте Promise. 
+  -->
+
+    <script>
+        const loginForm = document.getElementById("login-form");
+        loginForm.addEventListener("submit",function(e){
+            e.preventDefault();
+            const login = this.querySelector("[name='login']").value;
+            const password = this.querySelector("[name='password']").value;
+            const data = {
+                login,password
+            }
+            const answer = sendRequest("POST","http://danit.com.ua/login-json",data)
+            answer.then((result)=>{
+                if (result.status === "Success"){
+                    this.insertAdjacentHTML("afterend",`<p >Вы успешно авторизованы</p>`)
+                }else{
+                    this.insertAdjacentHTML("afterend",`<p >Вы провалили регистрацию</p>`)
+                }
+            })
+        })
+
+        function sendRequest(type,url,data){
+            const answer = new Promise((resolve,reject)=>{
+                const request = new XMLHttpRequest();
+                 request.open(type,url);
+                 request.responseType= "json";
+                 request.setRequestHeader("Content-Type","application/json");
+                 const body = JSON.stringify(data);
+                 request.send(body);
+                 request.onload=()=>{
+                     if (request.status<300){
+                        resolve(request.response);
+                     }else{
+                        console.log("misstake");
+                     }
+                 }
+            });
+            return answer
+        }
+        
+
+        
+    </script>
+
+</body>
+
+</html>

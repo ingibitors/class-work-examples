@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <form action="" id="filter-westeros-greate-houses">
+        <input type="checkbox" name="Lannister" value="Lannister">
+        <label for="Lannister">Lannister</label><br>
+        <input type="checkbox" name="Targaryen" value="Targaryen">
+        <label for="Targaryen">Targaryen</label><br>
+        <input type="checkbox" name="Stark" value="Stark">
+        <label for="Stark">Stark</label><br>
+        <input type="checkbox" name="Baratheon" value="Baratheon">
+        <label for="Baratheon">Baratheon</label><br>
+        <input type="checkbox" name="Tully" value="Tully">
+        <label for="Tully">Tully</label><br>
+        <input type="checkbox" name="Arryn" value="Arryn">
+        <label for="Arryn">Arryn</label><br>
+        <input type="checkbox" name="Tyrell" value="Tyrell">
+        <label for="Tyrell">Tyrell</label><br>
+        <input type="checkbox" name="Martell" value="Martell">
+        <label for="Martell">Martell</label><br>  
+        <input type="checkbox" name="Greyjoy" value="Greyjoy">
+        <label for="Greyjoy">Greyjoy</label><br>                                                               
+        <input type="submit" value="Узнать">
+    </form>
+
+    <script>
+        /*
+    Напишите код, который работает так: 
+    1. Пользователь отмечает галочками те Великие дома Вестероса, подробную информацию о которых он хочет увидеть.
+    2. Нажимает на кнопку "Узнать".
+    3. Отправляется AJAX-запрос типа POST по адресу http://danit.com.ua/westeros-great-houses для получения нужной информации.
+    Запрос должен быть в формате JSON вида:
+    {
+	"houseList": ["Lannister", "Martell"];
+    }
+    Вы передаете объект, свойство которого houseList представляет собой массив названий Великих домов на англ языке. 
+    Формат ответа:
+    [
+        {
+            "name": "Lannister",
+            "info": {
+                "words": "Услышь мой рёв!",
+                "head": "Тайвин Ланнистер",
+                "heir": "Джейме Ланнистер",
+                "castle": "Утес Кастерли"
+            }
+        },
+        {
+            "name": "Martell",
+            "info": {
+                "words": "Непреклонные, несгибаемые, несдающиеся.",
+                "head": "Доран Мартелл",
+                "heir": "Тристан Мартелл",
+                "castle": "Солнечное копье"
+            }
+        }
+    ]    
+    4. Ответ должен выводится в виде вложеного списка. 
+    
+    Для отправки запроса используйте Promise
+    */
+const filterWesterosGreateHouses = document.getElementById('filter-westeros-greate-houses');
+filterWesterosGreateHouses.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const list = this.querySelectorAll('input:checked')
+    const arr = [].map.call(list, elem => elem.value);
+    const body = {
+        houseList:arr
+    };
+    const request = postRequest("http://danit.com.ua/westeros-great-houses", body)
+    request.then(response => JSON.parse(response)).
+    then(result => console.log(result));
+
+
+
+})
+    function postRequest (url, data) {
+        const answer = new Promise((resolve, reject) => {
+            const request = new XMLHttpRequest();
+            request.open('POST', url);
+            request.setRequestHeader("Content-Type","application/json");
+            const body = JSON.stringify(data);
+            request.send(body);
+            request.onload = () => {
+                if (request.status < 300) {
+                    resolve(request.response)
+                } else {
+                    reject('error')
+                }
+            }
+        });
+        return answer      
+    }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

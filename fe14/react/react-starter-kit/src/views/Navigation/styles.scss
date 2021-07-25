@@ -1,0 +1,30 @@
+nav {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  border: 3px solid var(--color1);
+  padding: 5px;
+
+  & h1 {
+    display: inline-block;
+  }
+
+  & a:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  & a {
+    color: rebeccapurple;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      color: mediumpurple;
+    }
+  }
+
+  & .active {
+    color: firebrick;
+  }
+}
+

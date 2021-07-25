@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            _price: 0,
+            setPrice(value) {
+                if (Number.isInteger(value) && value > 0) {
+                    this._price = value;
+                    return true;
+                }
+                return false;
+            },
+            getPrice() {
+                return this._price;
+            },
+            _weight: 0,
+            set weight(value) {
+                 if (Number.isInteger(value) && value > 0) {
+                    this._weight = value;
+                    return true;
+                }
+                return false;               
+            },
+            get weight(){
+                return this._weight;
+            }
+         }
+        
+        obj.setPrice(10000); // для изменения значения псевдоприватного свойства _price мы используем метод setPrice
+        console.log(obj.getPrice()); // чтобы получить значение псевдоприватного свойства _price мы используем метод getPrice
+        
+        obj.weight = 2300; // мы обращаемся к функции как к переменной 
+        console.log(obj.weight); 
+
+    </script>
+</body>
+
+</html>

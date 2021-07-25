@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    Напишите класс User, который будет использоваться для создание объекта, 
+    описывающиго пользователя панели администрирования сайта. 
+    У объекта должны быть такие поля:
+    - role;
+    - login;
+    - email;
+    - password;
+    
+    а также метод:
+    - isValidEmail - проверят, является ли переданная строка email'ом 
+    (в ней должен быть символ @, минимум 1 точка и не должно быть пробелов);
+    
+    */
+        class User {
+            constructor(role,login,email,password){
+                this.role=role;
+                this.login=login;
+                this.email=email;
+                this.passowrd=password;
+            }
+            
+            isValidEmail(email){
+                // return (email.includes('@') && email.includes('.') && !email.includes(' '))
+                if (email.includes('@') && email.includes('.') && !email.includes(' ')) {
+                    return true                     
+                }
+                return false;
+            }
+        }
+        const admin= new User("admin","V.Pupkin","v_pupkin@gmail.com","vasya")
+        console.log(admin);
+        console.log(admin.isValidEmail("vasya@gmail.com"));
+        console.log(admin.isValidEmail("vasyagmail.com"));
+        console.log(admin.isValidEmail("vasya@gmailcom"));
+        console.log(admin.isValidEmail("vas ya@gmail.com"));
+
+
+    </script>
+</body>
+</html>
+</html>

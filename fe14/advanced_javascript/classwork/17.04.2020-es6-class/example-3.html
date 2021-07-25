@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <script>
+        class Product {
+            constructor(price, article, name, fullName) {
+                this.price = price;
+                this.article = article;
+                this.name = name;
+                this.fullName = fullName;
+            }
+
+            getDiskout(value) {
+                return this.price * (1 - value / 100);
+            }
+
+            calcDelivery() {
+                return this.price*0.01;
+            }
+        }
+
+        class Notebook extends Product {
+            constructor(battery, screen, memory, price, article, name, fullName) {
+                super(price, article, name, fullName);
+                /*
+                this.price = price;
+                this.article = article;
+                this.name = name;
+                this.fullName = fullName;
+                */
+                this.battery = battery;
+                this.screen = screen;
+                this.memory = memory;
+            }
+
+            calcDelivery(){
+                const basicDeliveryPrice = super.calcDelivery();
+                return basicDeliveryPrice + this.price*0.05;
+            }
+
+        }
+
+        class Phone extends Product {
+            constructor(NFC, OS, ...args) {
+                super(...args);
+                // super(args[0], args[1], args[2], args[3]);
+                this.NFC = NFC;
+                this.OS = OS;
+            }
+        }
+
+        const lenovo = new Notebook("4000мА", "15,6", "16Gb", 12000, "FX3252", "Lenovo X120S", "Lenovo X120S (Z123N34)");
+         console.log(lenovo);
+         console.log(lenovo.price);
+         console.log(lenovo.getDiskout(5));
+        console.log(lenovo.calcDelivery())
+
+        const xiomi = new Phone(true, "Android 9.0", 8600, "ZS3221", "Xiomi Note 8", "Xiomi Note 8 (VY322DF3)");
+         console.log(xiomi);
+         console.log(xiomi.price)
+         console.log(xiomi.getDiskout(10))
+        console.log(xiomi.calcDelivery())
+
+    </script>
+</body>
+
+</html>

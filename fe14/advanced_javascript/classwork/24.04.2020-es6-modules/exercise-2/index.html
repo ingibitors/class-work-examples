@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Возьмите код из предыдущей задачи и внутри конструктора генерируйте
+    ошибку, если тип поля ввода на соотвествует одному з списка: text, password, email, checkbox.
+    Полный список вынесите в отдельный массив и импортируйте в класс Input   -->
+    <script type="module">
+        import {Input} from './input.js';
+        const inputTextProps = {
+            type: "main",
+            classes: "form-control size-lg",
+            id: "user-name"
+        }
+        const inputText = new Input(inputTextProps);
+        document.body.append(inputText.render());
+    </script>  
+</body>
+</html>

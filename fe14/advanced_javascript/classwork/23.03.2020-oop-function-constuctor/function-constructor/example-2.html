@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const test = User();
+        // console.log(test)
+        const user = new User("Александр");
+        /*
+        this = {};
+        this.name = name;
+        return this;
+        */
+        // console.log(user);
+        
+        function User(name) {
+            this.name = name;
+            // return this писать не нужно - JS сделает это автоматически
+        }
+    </script>
+</body>
+
+</html>
